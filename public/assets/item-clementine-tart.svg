@@ -1,0 +1,16 @@
+<svg width="220" height="220" viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <linearGradient id="bg-clementine" x1="15%" y1="0%" x2="85%" y2="100%">
+            <stop offset="0%" stop-color="#fbf2de"/>
+            <stop offset="100%" stop-color="#f4cfa8"/>
+        </linearGradient>
+    </defs>
+    <circle cx="110" cy="110" r="105" fill="url(#bg-clementine)"/>
+    <circle cx="110" cy="110" r="70" fill="#f4b76f" stroke="#7f9c89" stroke-width="5"/>
+    <path d="M110 44c-36 0-66 30-66 66s30 66 66 66 66-30 66-66" fill="none" stroke="#f8d9aa" stroke-width="8" stroke-linecap="round" stroke-dasharray="16 18"/>
+    <path d="M110 72c21 0 38 17 38 38s-17 38-38 38-38-17-38-38" fill="none" stroke="#d08c4e" stroke-width="5" stroke-linecap="round"/>
+    <path d="M84 116c10-12 22-14 32-6s22 8 30-4" fill="none" stroke="#7f9c89" stroke-width="5" stroke-linecap="round"/>
+    <circle cx="98" cy="100" r="8" fill="#fff7e8"/>
+    <circle cx="134" cy="122" r="6" fill="#f7c99c"/>
+    <circle cx="126" cy="98" r="6" fill="#fce4ca"/>
+</svg>

@@ -1,0 +1,451 @@
+/* Responsive Fixes for Golden Sweet */
+
+/* 1. Universal Layout Polish */
+:root {
+    --section-padding-mobile: 4rem 1.25rem;
+}
+
+@media (max-width: 768px) {
+    section {
+        padding: var(--section-padding-mobile) !important;
+    }
+
+    .hero-section {
+        padding-top: 1.25rem !important;
+    }
+
+    .hero {
+        padding-top: 1.5rem !important;
+        padding-bottom: 2.5rem !important;
+    }
+
+    .section-header {
+        margin-bottom: 2.5rem !important;
+    }
+
+    .section-header h2 {
+        font-size: clamp(1.8rem, 8vw, 2.4rem);
+    }
+
+    /* Improved Button Tap Targets */
+    .btn {
+        width: 100%;
+        padding: 1rem 1.5rem;
+        font-size: 1rem;
+    }
+
+    .hero-actions {
+        width: 100%;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+}
+
+/* 2. Page Hero Spacing */
+@media (max-width: 768px) {
+    .page-hero {
+        padding: 5rem 1.25rem 3rem !important;
+    }
+
+    .page-hero h1 {
+        font-size: 2.2rem;
+    }
+}
+
+/* 3. Service Cards (nos-services.html) */
+@media (max-width: 768px) {
+    .service-card-premium {
+        height: auto !important;
+        min-height: 500px;
+        padding-bottom: 2rem;
+    }
+
+    .service-card-content {
+        padding: 2.5rem 1.5rem !important;
+    }
+
+    .services-grid-premium {
+        grid-template-columns: 1fr !important;
+        gap: 2rem;
+    }
+}
+
+/* 4. Flipbook Catalog (index.html) */
+@media (max-width: 768px) {
+    #flipbook-container {
+        width: 95vw !important;
+        height: 420px !important;
+    }
+
+    .flipbook-catalog {
+        padding: 4rem 0 !important;
+    }
+
+    .flipbook-header {
+        padding: 0 1.25rem;
+    }
+}
+
+/* 5. Provenance Globe (index.html) */
+@media (max-width: 768px) {
+    .provenance-content {
+        grid-template-columns: 1fr !important;
+        text-align: center;
+    }
+
+    .provenance-map {
+        margin: 0 auto !important;
+        max-width: 280px !important;
+        height: 280px !important;
+        order: -1;
+        overflow: hidden !important;
+    }
+
+    .provenance-map canvas#provenance-globe {
+        margin-top: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        max-height: 280px !important;
+    }
+
+    .provenance-list {
+        text-align: left;
+        margin-top: 2rem;
+    }
+}
+
+/* 6. Values Grid (index.html) */
+@media (max-width: 768px) {
+    .value-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+    }
+
+    .value-card {
+        padding: 2rem !important;
+    }
+}
+
+/* 7. Catalog Grid inside Flipbook */
+@media (max-width: 480px) {
+    .catalog-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    .ci-image {
+        height: 140px !important;
+    }
+}
+
+/* 8. Compact CTA Fix */
+@media (max-width: 768px) {
+    .compact-cta-inner {
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
+        padding: 3rem 1.5rem !important;
+    }
+
+    .cta-message {
+        align-items: center;
+    }
+
+    .cta-action {
+        width: 100%;
+        align-items: center;
+    }
+
+    .cta-btn-premium {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* 9. Header Fix for Language Selector */
+@media (max-width: 480px) {
+    .lang-selector {
+        padding: 0.2rem 0.4rem;
+        background: rgba(237, 192, 31, 0.1);
+        border-radius: 8px;
+    }
+
+    .lang-btn {
+        padding: 0.2rem 0.4rem;
+        font-size: 0.7rem;
+    }
+}
+
+/* 11. Footer Responsiveness */
+@media (max-width: 768px) {
+    .footer-top {
+        grid-template-columns: 1fr !important;
+        text-align: center;
+        gap: 3rem;
+    }
+
+    .footer-social ul {
+        justify-content: center;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 1.5rem;
+    }
+
+    .footer-legal-links {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+}
+
+/* 12. Immersive Timeline (la-maison.html) Mobile Fix */
+@media (max-width: 768px) {
+    .timeline-year-huge {
+        font-size: 5rem !important;
+        left: 5% !important;
+        top: 15vh !important;
+    }
+
+    .timeline-section-content {
+        padding: 0 1.5rem !important;
+        margin-top: 20vh;
+    }
+
+    .timeline-section-content h3 {
+        font-size: 1.8rem !important;
+    }
+
+    .timeline-nav {
+        bottom: 1.5rem !important;
+        padding: 0.5rem 1rem !important;
+    }
+
+    .timeline-nav button {
+        font-size: 0.8rem !important;
+    }
+
+    .timeline-icon {
+        display: flex !important;
+        justify-content: center !important;
+    }
+
+    .timeline-icon img {
+        margin: 0 auto !important;
+    }
+
+    html[dir="rtl"] .timeline-section {
+        background-position: 70% center;
+    }
+
+}
+
+/* 13. FAQ Accordion Mobile Padding */
+@media (max-width: 768px) {
+    .accordion-trigger {
+        padding: 1.25rem 1rem !important;
+        font-size: 1rem !important;
+    }
+
+    .accordion-body {
+        padding: 0 1rem 1.5rem !important;
+    }
+}
+
+/* 10. Menu Page Fixes */
+@media (max-width: 768px) {
+    .menu-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem;
+    }
+
+    .catalog-filters {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        padding: 0.5rem 1.25rem 1.5rem !important;
+        margin: 0 -1.25rem 2rem !important;
+        gap: 0.75rem !important;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+
+    .catalog-filters::-webkit-scrollbar {
+        display: none;
+    }
+
+    .filter-btn {
+        white-space: nowrap !important;
+        padding: 0.6rem 1.2rem !important;
+        flex-shrink: 0 !important;
+    }
+}
+
+/* 14. Laboratory & Process Fixes */
+@media (max-width: 768px) {
+
+    .process-steps,
+    .values-grid,
+    .certifications-grid,
+    .press-grid,
+    .awards-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+    }
+
+    .certification-badge {
+        flex-direction: column;
+        text-align: center;
+        padding: 1.5rem !important;
+    }
+
+    .lab-gallery {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+
+/* 15. Franchising Journey Fixes */
+@media (max-width: 768px) {
+    .journey-steps {
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 0 !important;
+    }
+
+    .journey-connector {
+        width: 2px !important;
+        height: 40px !important;
+        margin: 0 !important;
+    }
+
+    .journey-step {
+        width: 100% !important;
+        max-width: 300px !important;
+        margin-bottom: 0 !important;
+    }
+
+    .investment-panel {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+    }
+}
+
+/* 16. Community/Instagram Section Centralization */
+@media (max-width: 768px) {
+    .community-layout {
+        grid-template-columns: 1fr !important;
+        text-align: center;
+    }
+
+    .community-copy {
+        max-width: 100% !important;
+        align-items: center !important;
+        text-align: center !important;
+    }
+
+    .community-lede {
+        text-align: center !important;
+        margin: 0 auto !important;
+        font-size: 0.9rem !important;
+    }
+
+    .community-copy h2 {
+        font-size: 1.5rem !important;
+    }
+
+    .community-actions {
+        justify-content: center !important;
+    }
+
+    .community-highlights div {
+        text-align: center !important;
+        justify-items: center !important;
+    }
+
+    .community-highlights dd {
+        width: 100% !important;
+    }
+
+    .community-media {
+        display: block !important;
+        width: 100% !important;
+        overflow: hidden !important;
+    }
+
+    .community-gallery {
+        margin: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        display: block !important;
+        /* Wrapper is block */
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        touch-action: pan-x !important;
+        overscroll-behavior-x: contain;
+        /* scroll-snap-type: x mandatory; */
+        padding-bottom: 2rem !important;
+        /* Space for shadow/scroll */
+
+        /* Ensure touch scrolling works */
+        -webkit-overflow-scrolling: touch;
+
+        /* Reset styles */
+        background: none !important;
+        border: none !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        animation: none !important;
+        perspective: none !important;
+    }
+
+    .community-gallery__ring {
+        display: flex !important;
+        width: max-content !important;
+        /* Force content width */
+        gap: 1.5rem !important;
+        padding: 1rem 1.5rem !important;
+        /* Side padding */
+
+        /* Reset positioning */
+        position: static !important;
+        transform: none !important;
+        inset: auto !important;
+    }
+
+    /* Direct children of gallery (if structure is different) or items themselves */
+    .community-gallery__item {
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        transform: translateZ(0) !important;
+        /* HW Acceleration */
+
+        /* Ensure no focusing/dimming effects */
+        opacity: 1 !important;
+        visibility: visible !important;
+        filter: none !important;
+        scale: 1 !important;
+
+        /* Card sizing */
+        flex: 0 0 240px !important;
+        /* Fixed width cards */
+        width: 240px !important;
+        height: 320px !important;
+
+        scroll-snap-align: center;
+        margin: 0 !important;
+    }
+
+    /* Optional: Hide scrollbar for cleaner look but keep functionality */
+    .community-gallery::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+@media (max-width: 880px) {
+    html[dir="rtl"] .history-image img {
+        transform: translateX(10%);
+    }
+}

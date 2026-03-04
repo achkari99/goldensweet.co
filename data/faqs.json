@@ -1,0 +1,30 @@
+[
+    {
+        "id": "faq001",
+        "category": "allergens",
+        "question": "Are your products vegan?",
+        "answer": "Yes! All our products are 100% plant-based. We use no animal products whatsoever - no dairy, no eggs, no honey.",
+        "createdAt": "2024-01-01T00:00:00.000Z"
+    },
+    {
+        "id": "faq002",
+        "category": "allergens",
+        "question": "Do your products contain gluten?",
+        "answer": "Most of our pastries contain wheat flour and therefore gluten. We don't currently offer gluten-free options.",
+        "createdAt": "2024-01-01T00:00:00.000Z"
+    },
+    {
+        "id": "faq003",
+        "category": "delivery",
+        "question": "Where do you deliver?",
+        "answer": "We deliver throughout Marrakech including Guéliz, Hivernage, Palmeraie, Médina. Free delivery for orders over 300 MAD.",
+        "createdAt": "2024-01-01T00:00:00.000Z"
+    },
+    {
+        "id": "faq004",
+        "category": "orders",
+        "question": "Can I order at night?",
+        "answer": "Absolutely! We're open 24/7. Our night team bakes fresh products throughout the night.",
+        "createdAt": "2024-01-01T00:00:00.000Z"
+    }
+]

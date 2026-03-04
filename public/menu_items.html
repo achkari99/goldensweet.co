@@ -1,0 +1,1201 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <script>
+        // Add loading class immediately to prevent Flash of Untranslated Content
+        // The class is removed in js/i18n.js after translations are applied
+        document.documentElement.classList.add('i18n-loading');
+
+        // Safety timeout: remove class after 3s even if translation fails
+        // to ensure content is visible
+        setTimeout(() => {
+            document.documentElement.classList.remove('i18n-loading');
+        }, 3000);
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/jsid=G-GQVHJLZL31"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-GQVHJLZL31', { anonymize_ip: true });
+    </script>
+    <title>Golden Sweet</title>
+    <meta name="description"
+        content="Golden Sweet creates artisan plant-based cinnamon rolls and pastries in Morocco, Tetouan & Morocco, Tangier. Order your 100% homemade treats, available 24/7.">
+    <meta name="theme-color" content="#7f9c89">
+    <meta property="og:title" content="Golden Sweet">
+    <meta property="og:description"
+        content="Golden Sweet creates artisan plant-based cinnamon rolls and pastries. Available 24/7.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://goldensweet.ma/">
+    <meta property="og:image" content="https://goldensweet.ma/og-image.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" href="images/logo1.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2family=Playfair+Display:wght@500;600;700&family=Work+Sans:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="preload" as="image" href="images/image.png" fetchpriority="high">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/cart-hover.css">
+    <link rel="stylesheet" href="css/interactive.css">
+    <link rel="stylesheet" href="css/interactive-cta.css">
+    <link rel="stylesheet" href="css/flipbook.css">
+    <link rel="stylesheet" href="css/rtl.css">
+    <link rel="stylesheet" href="css/responsive-fix.css">
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Bakery",
+            "name": "Golden Sweet",
+            "description": "Golden sweet pastry only available in Morocco, Tetouan and Morocco, Tangier delivery with 100% natural ingredients.",
+            "image": "https://goldensweet.ma/og-image.jpg",
+            "url": "https://goldensweet.ma/",
+            "telephone": "+212637629395",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "",
+                "addressLocality": "Morocco, Tetouan",
+                "postalCode": "",
+                "addressCountry": "MA"
+            },
+            "servesCuisine": "Cuisine vgtale",
+            "openingHours": "Mo-Su 00:00-23:59",
+            "sameAs": [
+                "https://www.instagram.com/goldensweetchefaziza",
+                "https://www.facebook.com/goldensweetpatisserie"
+            ]
+        }
+    </script>
+</head>
+
+<body id="top" class="hero-intro-pending">
+    <!-- Header loaded dynamically from components/header.html -->
+    <div id="header-placeholder"></div>
+
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-copy">
+                <div class="hero-logo-wrap">
+                    <img class="hero-logo" src="images/logo1.png" alt="Golden Sweet logo">
+                </div>
+                <h1 data-i18n="home.hero_static_title">Your N°1 Dietary Pastry
+Family First. Safety Always</h1>
+                <div class="hero-actions">
+                    <a class="btn btn-primary" href="#values" data-i18n="home.hero_cta_explore"
+                        onclick="document.querySelector('#values').scrollIntoView({behavior: 'smooth'}); return false;">Explore more</a>
+                    <a class="btn btn-outline btn-hero-franchise" href="pages/franchising.html"
+                        data-i18n="home.hero_cta_franchising">Franchising opportunities</a>
+                </div>
+            </div>
+            <div class="hero-media hero-media--photo" aria-hidden="true">
+                    <div class="hero-overlay-card">
+                        <p data-i18n="home.hero_testimonial">Your pistachio rolls light up our team evenings!</p>
+                        <span data-i18n="home.hero_testimonial_author">Salma, Guéliz</span>
+                    </div>
+                    <!-- Scroll Indicator -->
+                    <div class="scroll-indicator"
+                        onclick="document.querySelector('#values').scrollIntoView({behavior: 'smooth'})">
+                        <span class="scroll-text" data-i18n="home.hero_scroll">SCROLL</span>
+                        <div class="scroll-line"></div>
+                    </div>
+            </div>
+        </section>
+
+
+        <section class="values" id="values" aria-labelledby="values-heading" data-animate>
+            <h2 id="values-heading" data-i18n="home.values_heading">OUR COMMITMENTS</h2>
+            <div class="value-grid">
+                <article class="value-card">
+                    <div class="value-icon" aria-hidden="true">
+                        <svg viewBox="0 0 64 64" role="img">
+                            <!-- Shield with checkmark - protection and verification -->
+                            <path d="M32 8L16 14v12c0 10 7 19 16 22 9-3 16-12 16-22V14L32 8z" fill="none"
+                                stroke-width="2.5" stroke-linejoin="round" />
+                            <path d="M24 30l6 6 10-12" fill="none" stroke-width="2.5" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <h3 data-i18n="home.value1_title">Healthy Ingredients</h3>
+                    <p data-i18n="home.value1_desc">Crafted for your safety and peace of mind, using carefully selected natural ingredients.</p>
+                </article>
+                <article class="value-card">
+                    <div class="value-icon" aria-hidden="true">
+                        <svg viewBox="0 0 64 64" role="img">
+                            <!-- Sunrise with rays - freshness and daily renewal -->
+                            <circle cx="32" cy="36" r="10" fill="none" stroke-width="2.5" />
+                            <!-- Vertical and horizontal rays -->
+                            <path d="M32 26v-8M32 46v8M42 36h8M22 36h-8" stroke-width="2.5" stroke-linecap="round" />
+                            <!-- Diagonal rays -->
+                            <path d="M39 29l6-6M25 43l-6 6M39 43l6 6M25 29l-6-6" stroke-width="2.5"
+                                stroke-linecap="round" />
+                        </svg>
+                    </div>
+                    <h3 data-i18n="home.value2_title">Daily Production</h3>
+                    <p data-i18n="home.value2_desc">Freshly prepared every day to ensure quality, safety, and consistent flavor.</p>
+                </article>
+                <article class="value-card">
+                    <div class="value-icon" aria-hidden="true">
+                        <svg viewBox="0 0 64 64" role="img">
+                            <!-- Network nodes expanding - growth and scaling -->
+                            <circle cx="32" cy="32" r="5" fill="none" stroke-width="2.5" />
+                            <circle cx="20" cy="20" r="3.5" fill="none" stroke-width="2" />
+                            <circle cx="44" cy="20" r="3.5" fill="none" stroke-width="2" />
+                            <circle cx="20" cy="44" r="3.5" fill="none" stroke-width="2" />
+                            <circle cx="44" cy="44" r="3.5" fill="none" stroke-width="2" />
+                            <path d="M28 28L22 22M36 28L42 22M28 36L22 42M36 36L42 42" stroke-width="2"
+                                stroke-linecap="round" />
+                            <path d="M16 16L14 14M48 16L50 14M16 48L14 50M48 48L50 50" stroke-width="2"
+                                stroke-linecap="round" />
+                        </svg>
+                    </div>
+                    <h3 data-i18n="home.value3_title">High Expansion</h3>
+                    <p data-i18n="home.value3_desc">Our flavors are carefully selected to offer an authentic Moroccan experience, where premium quality meets refined taste in every detail.</p>
+                </article>
+                <article class="value-card">
+                    <div class="value-icon" aria-hidden="true">
+                        <svg viewBox="0 0 64 64" role="img">
+                            <path d="M32 46s-14-8.5-14-20a8 8 0 0 1 14-5 8 8 0 0 1 14 5c0 11.5-14 20-14 20z" fill="none"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path d="M20 50h24M24 54h16" fill="none" stroke-width="2" stroke-linecap="round"></path>
+                        </svg>
+                    </div>
+                    <h3 data-i18n="home.value4_title">Transparent &amp; Supportive</h3>
+                    <p data-i18n="home.value4_desc">Built on honesty and responsibility, with clear sourcing and support for the local community.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="story" id="story" aria-labelledby="story-heading" data-animate>
+            <div class="section-header">
+                <span class="section-kicker" data-i18n="home.story_kicker">OUR STORY</span>
+                <h2 id="story-heading" data-i18n="home.story_heading">Born from awareness, dedicated to well-being</h2>
+                <p class="section-intro" data-i18n="home.story_intro">Golden Sweet was founded in 2019, during the COVID-19 pandemic, when health and immunity became global priorities. This moment shaped our vision: indulgence should never come at the expense of well-being. From day one, we chose to create 100% natural, sugar-free pastries designed to be safe, balanced, and bring true peace of mind.</p>
+            </div>
+            <div class="timeline-interactive">
+                <div class="timeline-line"></div>
+
+                <article class="timeline-item timeline-item--left" data-year="2019" data-color="emerald">
+                    <div class="timeline-node">
+                        <div class="timeline-node-pulse"></div>
+                        <div class="timeline-node-core"></div>
+                    </div>
+                    <div class="timeline-connector"></div>
+                    <div class="timeline-content-wrapper">
+                        <div class="timeline-header">
+                            <span class="timeline-year" data-i18n="home.timeline_2019">2019</span>
+                            <h3 class="timeline-title" data-i18n="home.timeline_2019_title">The first healthy recipes</h3>
+                        </div>
+                        <div class="timeline-content">
+                            <p data-i18n="home.timeline_2019_desc">From the very beginning, we built every recipe on six pillars of healthy indulgence: lactose-free, sugar-free, no white flour used, using natural fermentation, gluten-free, and free from hydrogenated oil. We rebuilt our pastries with natural oils like argan, olive, and coconut, and alternative flours such as barley, almond, and corn.</p>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="timeline-item timeline-item--right" data-year="2021" data-color="amber">
+                    <div class="timeline-node">
+                        <div class="timeline-node-pulse"></div>
+                        <div class="timeline-node-core"></div>
+                    </div>
+                    <div class="timeline-connector"></div>
+                    <div class="timeline-content-wrapper">
+                        <div class="timeline-header">
+                            <span class="timeline-year" data-i18n="home.timeline_2021">2021</span>
+                            <h3 class="timeline-title" data-i18n="home.timeline_2021_title">Quality and consistency</h3>
+                        </div>
+                        <div class="timeline-content">
+                            <p data-i18n="home.timeline_2021_desc">Continuous refinement of taste and texture, alongside strict standards for ingredient sourcing, preparation, and food safety.</p>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="timeline-item timeline-item--left" data-year="2023" data-color="violet">
+                    <div class="timeline-node">
+                        <div class="timeline-node-pulse"></div>
+                        <div class="timeline-node-core"></div>
+                    </div>
+                    <div class="timeline-connector"></div>
+                    <div class="timeline-content-wrapper">
+                        <div class="timeline-header">
+                            <span class="timeline-year" data-i18n="home.timeline_2023">2023</span>
+                            <h3 class="timeline-title" data-i18n="home.timeline_2023_title">Controlled growth</h3>
+                        </div>
+                        <div class="timeline-content">
+                            <p data-i18n="home.timeline_2023_desc">Expansion of production and menu offerings while preserving freshness, safety, and our sugar-free, natural philosophy.</p>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="timeline-item timeline-item--right" data-year="2026" data-color="cyan">
+                    <div class="timeline-node">
+                        <div class="timeline-node-pulse"></div>
+                        <div class="timeline-node-core"></div>
+                    </div>
+                    <div class="timeline-connector"></div>
+                    <div class="timeline-content-wrapper">
+                        <div class="timeline-header">
+                            <span class="timeline-year" data-i18n="home.timeline_2026">2026</span>
+                            <h3 class="timeline-title" data-i18n="home.timeline_2026_title">A global vision</h3>
+                        </div>
+                        <div class="timeline-content">
+                            <p data-i18n="home.timeline_2026_desc">Expansion through franchising, bringing the Golden Sweet experience to new cities while maintaining the same quality, recipes, and standards worldwide.</p>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="provenance" aria-labelledby="provenance-heading" data-animate>
+            <div class="provenance-content">
+                <div>
+                    <span class="section-kicker" data-i18n="home.provenance_kicker">AVAILABILITY</span>
+                    <h2 id="provenance-heading" data-i18n="home.provenance_heading">International food with Moroccan recipes</h2>
+                    <p data-i18n="home.provenance_desc">Golden Sweet crafts international flavors with Moroccan hands, using 100% natural ingredients. To keep freshness and safety, delivery remains focused locally.</p>
+                    <ul class="provenance-list">
+                        <li><strong data-i18n="home.provenance_why">Why</strong>  <span
+                                data-i18n="home.provenance_why_desc">Delicate products, no preservatives.</span>
+                        </li>
+                        <li><strong data-i18n="home.provenance_choice">Our Choice</strong>  <span
+                                data-i18n="home.provenance_choice_desc">Limited delivery to protect quality.</span>
+                        </li>
+                        <li><strong data-i18n="home.provenance_solution">The Solution</strong>  <span
+                                data-i18n="home.provenance_solution_desc">Franchising, bringing Golden Sweet locally to the world.</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="provenance-map" aria-hidden="true">
+                    <canvas id="provenance-globe" style="width: 100%; height: 100%; aspect-ratio: 1;"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Flipbook Catalog -->
+        <section class="flipbook-catalog" id="catalog" aria-labelledby="catalog-heading" data-animate>
+            <div class="flipbook-wrapper">
+                <div class="flipbook-header">
+                    <span class="section-kicker" data-i18n="home.catalog_kicker">THE GOLDEN SWEET EDITION</span>
+                    <h2 id="catalog-heading" data-i18n="home.catalog_heading">Where Wellness Meets Indulgence</h2>
+                    <p data-i18n="home.catalog_desc">Turn the pages to discover our artisan story, crafted for those who refuse to compromise</p>
+                </div>
+
+                <div id="flipbook-container">
+                    <!-- Page 1: Premium Cover -->
+                    <div class="page" data-density="hard">
+                        <div class="page-content cover-page">
+                            <div class="cover-frame">
+                                <div class="cover-header">
+                                    <span class="cover-edition" data-i18n="home.catalog_cover_edition">The Golden Collection</span>
+                                    <span class="cover-year" data-i18n="home.catalog_cover_year">Est. 2019</span>
+                                </div>
+                                <div class="cover-center">
+                                    <div class="logo-mark-large">
+                                        <img src="images/logo1.png" alt="Golden Sweet Logo">
+                                    </div>
+                                    <h1 class="cover-title" data-i18n="home.catalog_cover_title">Golden Sweet</h1>
+                                    <p class="cover-subtitle" data-i18n="home.catalog_cover_subtitle">Purely Natural</p>
+                                </div>
+                                <div class="cover-footer">
+                                    <span class="cover-footer-text" data-i18n="home.catalog_cover_footer">Dietary Pastry</span>
+                                </div>
+                            </div>
+                            <div class="cover-texture"></div>
+                        </div>
+                    </div>
+
+                    <!-- Page 2: Philosophy Intro -->
+                    <div class="page">
+                        <div class="page-content story-page left">
+                            <div class="page-inner-border">
+                                <div class="page-header-small">
+                                    <span class="page-chapter" data-i18n="home.catalog_page1_chapter">01</span>
+                                    <span class="page-label" data-i18n="home.catalog_page1_label">Philosophy</span>
+                                </div>
+
+                                <div class="story-content">
+                                    <h2 class="story-title" data-i18n="home.catalog_page1_title">Safety, Redefined.</h2>
+                                    <p class="story-text-lead" data-i18n="home.catalog_page1_lead">We believe that true pleasure comes from purity.</p>
+                                    <p class="story-text" data-i18n="home.catalog_page1_text">Since 2019, Golden Sweet has been crafting a new standard for pastry—where health and delight are inseparable.</p>
+
+                                    <div class="health-stamp">
+                                        <svg viewBox="0 0 100 100" class="stamp-rotate">
+                                            <path id="curve"
+                                                d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0"
+                                                fill="transparent" />
+                                            <text width="500">
+                                                <textPath xlink:href="#curve" class="stamp-text"
+                                                    data-i18n="home.catalog_page1_stamp">100% NATURAL · PRESERVATIVE FREE ·</textPath>
+                                            </text>
+                                        </svg>
+                                        <div class="stamp-center">100%</div>
+                                    </div>
+                                </div>
+                                <span class="page-number">1</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Page 3: The Promise -->
+                    <div class="page">
+                        <div class="page-content story-page right">
+                            <div class="page-inner-border">
+                                <section class="promise-section">
+                                    <h3 class="section-title-sm" data-i18n="home.catalog_page2_title">Our Promise</h3>
+                                    <ul class="promise-list">
+                                        <li>
+                                            <span class="promise-icon">
+                                                <img src="images/icon_leaf.png" alt="Leaf Icon">
+                                            </span>
+                                            <div class="promise-text">
+                                                <strong data-i18n="home.catalog_page2_promise1_title">Zero Refined Sugar</strong>
+                                                <p data-i18n="home.catalog_page2_promise1_desc">Sweetened only with nature's finest ingredients.</p>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <span class="promise-icon">
+                                                <img src="images/icon_sparkle.png" alt="Sparkle Icon">
+                                            </span>
+                                            <div class="promise-text">
+                                                <strong data-i18n="home.catalog_page2_promise2_title">Daily Freshness</strong>
+                                                <p data-i18n="home.catalog_page2_promise2_desc">Baked fresh every morning for peak flavor.</p>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <span class="promise-icon">
+                                                <img src="images/icon_shield.png" alt="Shield Icon">
+                                            </span>
+                                            <div class="promise-text">
+                                                <strong data-i18n="home.catalog_page2_promise3_title">Safety First</strong>
+                                                <p data-i18n="home.catalog_page2_promise3_desc">Strict hygiene standards for your peace of mind.</p>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </section>
+                                <div class="signature-block">
+                                    <p data-i18n="home.catalog_page2_signature">Chef Aziza</p>
+                                </div>
+                                <span class="page-number">2</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Page 4: Raw Materials - Honey -->
+                    <div class="page">
+                        <div class="page-content visual-page left">
+                            <div class="page-inner-border">
+                                <div class="page-header-small">
+                                    <span class="page-chapter" data-i18n="home.catalog_raw_honey_chapter">02</span>
+                                    <span class="page-label" data-i18n="home.catalog_raw_honey_label">Raw Materials</span>
+                                </div>
+                                <div class="full-page-feature">
+                                    <h3 class="feature-title" data-i18n="home.catalog_raw_honey_title">Honey, Our Natural Sweetener</h3>
+                                    <p class="feature-text" data-i18n="home.catalog_raw_honey_text1">We choose Moroccan honeys harvested in small batches for their purity, floral notes, and gentle sweetness—Daghmous honey, Zaatar (thyme) honey, and Marouane honey.</p>
+                                    <div class="feature-image-container" style="transform: rotate(2deg);">
+                                        <img src="images/honey.png" alt="Jar of honey" class="feature-img" style="filter: sepia(0.2);">
+                                    </div>
+                                    <p class="feature-text" data-i18n="home.catalog_raw_honey_text2">It gives our pastries a rounded sweetness without refined sugar, while keeping flavors bright and balanced.</p>
+                                </div>
+                                <span class="page-number">3</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Page 5: Raw Materials - Chocolate -->
+                    <div class="page">
+                        <div class="page-content visual-page right">
+                            <div class="page-inner-border">
+                                <div class="page-header-small">
+                                    <span class="page-chapter" data-i18n="home.catalog_raw_chocolate_chapter">02</span>
+                                    <span class="page-label" data-i18n="home.catalog_raw_chocolate_label">Raw Materials</span>
+                                </div>
+                                <div class="full-page-feature">
+                                    <h3 class="feature-title" data-i18n="home.catalog_raw_chocolate_title">Chocolate, Deep and Pure</h3>
+                                    <p class="feature-text" data-i18n="home.catalog_raw_chocolate_text1">We craft almond chocolate and hazelnut chocolate for a smooth, indulgent taste without added sugar.</p>
+                                    <div class="feature-image-container" style="transform: rotate(-2deg);">
+                                        <img src="images/chocolate.png" alt="Chocolate and almonds" class="feature-img" style="filter: sepia(0.2);">
+                                    </div>
+                                    <p class="feature-text" data-i18n="home.catalog_raw_chocolate_text2">The result is a velvety chocolate profile that stays light, clean, and satisfying.</p>
+                                </div>
+                                <span class="page-number">4</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Page 6: Raw Materials - Amlou -->
+                    <div class="page">
+                        <div class="page-content visual-page left">
+                            <div class="page-inner-border">
+                                <div class="page-header-small">
+                                    <span class="page-chapter" data-i18n="home.catalog_raw_amlou_chapter">02</span>
+                                    <span class="page-label" data-i18n="home.catalog_raw_amlou_label">Raw Materials</span>
+                                </div>
+                                <div class="full-page-feature">
+                                    <h3 class="feature-title" data-i18n="home.catalog_raw_amlou_title">Amlou, Moroccan Soul</h3>
+                                    <p class="feature-text" data-i18n="home.catalog_raw_amlou_text1">Our amlou is prepared in two signature styles: pumpkin seeds amlou and almond amlou, gently blended into a creamy, nutrient-rich paste.</p>
+                                    <div class="feature-image-container" style="transform: rotate(1deg);">
+                                        <img src="images/Amlou.png" alt="Amlou jar" class="feature-img" style="filter: sepia(0.2);">
+                                    </div>
+                                    <p class="feature-text" data-i18n="home.catalog_raw_amlou_text2">It adds a toasty, comforting richness that makes every bite feel grounded and authentic.</p>
+                                </div>
+                                <span class="page-number">5</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Page 7: Raw Materials - Oils -->
+                    <div class="page">
+                        <div class="page-content visual-page right">
+                            <div class="page-inner-border">
+                                <div class="page-header-small">
+                                    <span class="page-chapter" data-i18n="home.catalog_raw_oils_chapter">02</span>
+                                    <span class="page-label" data-i18n="home.catalog_raw_oils_label">Raw Materials</span>
+                                </div>
+                                <div class="full-page-feature">
+                                    <h3 class="feature-title" data-i18n="home.catalog_raw_oils_title">Oils, Clean and Nourishing</h3>
+                                    <p class="feature-text" data-i18n="home.catalog_raw_oils_text1">We replace butter with carefully selected natural oils: olive oil, almond oil, and coconut oil to keep textures tender and light.</p>
+                                    <div class="feature-image-container" style="transform: rotate(-1deg);">
+                                        <img src="images/oils.png" alt="Coconut oil" class="feature-img" style="filter: sepia(0.2);">
+                                    </div>
+                                    <p class="feature-text" data-i18n="home.catalog_raw_oils_text2">They deliver a clean finish and let each flavor shine without heaviness.</p>
+                                </div>
+                                <span class="page-number">6</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Page 5: The Process (NEW) -->
+                    <div class="page">
+                        <div class="page-content text-page right ebook-page-11">
+                            <div class="page-inner-border">
+                                <div class="page-header-small">
+                                    <span class="page-chapter" data-i18n="home.catalog_page4_chapter">03</span>
+                                    <span class="page-label" data-i18n="home.catalog_page4_label">Craft</span>
+                                </div>
+                                <div class="story-content">
+                                    <h2 class="story-title" data-i18n="home.catalog_page4_title">The Art of Natural Fermentation.</h2>
+                                    <p class="story-text-lead" data-i18n="home.catalog_page4_lead">Nature does the lifting; we simply guide it.</p>
+                                    <p class="story-text" data-i18n="home.catalog_page4_text">We rely on natural fermentation to wake up every grain. The dough ferments gently, developing depth of flavor while staying light, balanced, and kind to digestion.</p>
+                                    <div class="note-box" style="margin-top: 2rem;">
+                                        <p data-i18n="home.catalog_page4_note">Natural Fermentation · hand-rolled</p>
+                                    </div>
+                                </div>
+                                <span class="page-number">7</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Page 6: Signature Rolls -->
+                    <div class="page">
+                        <div class="page-content product-page left">
+                            <div class="page-inner-border">
+                                <div class="page-header-small">
+                                    <span class="page-chapter" data-i18n="home.catalog_page5_chapter">04</span>
+                                    <span class="page-label" data-i18n="home.catalog_page5_label">Signatures</span>
+                                </div>
+
+                                <div class="catalog-grid">
+                                    <div class="catalog-item">
+                                        <div class="ci-image">
+                                            <img src="images/sig1.jpeg" alt="Classic Cinnamon">
+                                        </div>
+                                        <div class="ci-details">
+                                            <h4 data-i18n="home.catalog_product1_name">MOKACHOCA Cake Moka and Dark Chocolate Gluten Free</h4>
+                                            <div class="ci-line"></div>
+                                            <span class="ci-price" data-i18n="home.catalog_product1_price">80 dhs</span>
+                                        </div>
+                                    </div>
+                                    <div class="catalog-item">
+                                        <div class="ci-image">
+                                            <img src="images/sig2.jpeg" alt="Choco Hazelnut">
+                                        </div>
+                                        <div class="ci-details">
+                                            <h4 data-i18n="home.catalog_product2_name">Dark Chocolate and Almond Tartlet</h4>
+                                            <div class="ci-line"></div>
+                                            <span class="ci-price" data-i18n="home.catalog_product2_price">25 dhs</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <span class="page-number">8</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Page 7: Premium Editions -->
+                    <div class="page">
+                        <div class="page-content product-page right">
+                            <div class="page-inner-border">
+                                <div class="catalog-grid">
+                                    <div class="catalog-item">
+                                        <div class="ci-image">
+                                            <img src="images/sig3.jpeg" alt="Caramel Pecan">
+                                        </div>
+                                        <div class="ci-details">
+                                            <h4 data-i18n="home.catalog_product3_name">DATIMANDE Cake Low Carb</h4>
+                                            <div class="ci-line"></div>
+                                            <span class="ci-price" data-i18n="home.catalog_product3_price">70 dhs</span>
+                                        </div>
+                                    </div>
+                                    <div class="catalog-item">
+                                        <div class="ci-image">
+                                            <img src="images/sig4.png" alt="Pistachio">
+                                        </div>
+                                        <div class="ci-details">
+                                            <h4 data-i18n="home.catalog_product4_name">Snow White</h4>
+                                            <div class="ci-line"></div>
+                                            <span class="ci-price" data-i18n="home.catalog_product4_price">80 dhs</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="note-box">
+                                    <p data-i18n="home.catalog_page7_note">All rolls are 100% healthy &amp; safe for all.</p>
+                                </div>
+                                <span class="page-number">9</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Page 12: NEW - Gifting & Corporate -->
+                    <div class="page">
+                        <div class="page-content text-page left ebook-page-12">
+                            <div class="page-inner-border">
+                                <div class="page-center-content">
+                                    <h3 class="elegant-heading" data-i18n="home.catalog_page12_title">Gifting</h3>
+                                    <p class="story-text" style="text-align: center; margin-bottom: 2rem;"
+                                        data-i18n="home.catalog_page12_desc">Make an impression with the taste of pure wellness. Perfect for corporate clients or wedding favors.</p>
+                                    <div class="service-row">
+                                        <span class="service-icon-lg">&#127873;</span>
+                                        <div class="service-data">
+                                            <h4 data-i18n="home.catalog_gift1_title">Elegant packaging</h4>
+                                            <p data-i18n="home.catalog_gift1_desc">Refined packaging designed to impress at first sight.</p>
+                                        </div>
+                                    </div>
+                                    <div class="service-row">
+                                        <span class="service-icon-lg">&#127872;</span>
+                                        <div class="service-data">
+                                            <h4 data-i18n="home.catalog_gift2_title">Corporate-Ready Gifting</h4>
+                                            <p data-i18n="home.catalog_gift2_desc">Refined solutions suitable for professional occasions.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <span class="page-number">10</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Page 13: NEW - Sustainability -->
+                    <div class="page">
+                        <div class="page-content text-page right ebook-page-13-impact">
+                            <div class="page-inner-border">
+                                <div class="page-header-small">
+                                    <span class="page-chapter" data-i18n="home.catalog_page13_chapter">08</span>
+                                    <span class="page-label" data-i18n="home.catalog_page13_label">Impact</span>
+                                </div>
+                                <h2 class="story-title" data-i18n="home.catalog_page13_title">Tread Lightly.</h2>
+                                <p class="story-text" data-i18n="home.catalog_page13_desc">We believe in kindness to the earth as much as kindness to our bodies.</p>
+                                <ul class="promise-list" style="margin-top: 2rem;">
+                                    <li>
+                                        <span class="promise-icon">&#9851;</span>
+                                        <div class="promise-text">
+                                            <strong data-i18n="home.catalog_sustain1_title">Eco-Packaging</strong>
+                                            <p data-i18n="home.catalog_sustain1_desc">Made with environmentally conscious materials.</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <span class="promise-icon">&#128666;</span>
+                                        <div class="promise-text">
+                                            <strong data-i18n="home.catalog_sustain2_title">Local Sourcing</strong>
+                                            <p data-i18n="home.catalog_sustain2_desc">Minimizing carbon footprint by buying local.</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <span class="page-number">11</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Page 14: Services -->
+                    <div class="page">
+                        <div class="page-content text-page left">
+                            <div class="page-inner-border">
+                                <div class="page-center-content">
+                                    <h3 class="elegant-heading" data-i18n="home.catalog_page14_title">Services</h3>
+                                    <div class="service-row">
+                                        <span class="service-icon-lg">&#127856;</span>
+                                        <div class="service-data">
+                                            <h4 data-i18n="home.catalog_service1_title">Celebrations</h4>
+                                            <p data-i18n="home.catalog_service1_desc">Custom cakes &amp; catering.</p>
+                                        </div>
+                                    </div>
+                                    <div class="service-row">
+                                        <span class="service-icon-lg">&#127970;</span>
+                                        <div class="service-data">
+                                            <h4 data-i18n="home.catalog_service2_title">Wholesale</h4>
+                                            <p data-i18n="home.catalog_service2_desc">For premium hotels &amp; cafés.</p>
+                                        </div>
+                                    </div>
+                                    <div class="service-row">
+                                        <span class="service-icon-lg">&#127891;</span>
+                                        <div class="service-data">
+                                            <h4 data-i18n="home.catalog_service3_title">Masterclasses</h4>
+                                            <p data-i18n="home.catalog_service3_desc">Learn the art of healthy baking.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <span class="page-number">12</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Page 15: NEW - Testimonials -->
+                    <div class="page">
+                        <div class="page-content story-page right highlight-bg ebook-page-13" style="background: var(--gold-dark);">
+                            <div class="page-inner-border" style="border-color: rgba(255,255,255,0.3);">
+                                <p class="eyebrow-accent" style="color: #fff;" data-i18n="home.catalog_page15_label">Testimonials</p>
+                                <div class="story-content">
+                                    <p class="story-text-lead" style="color: #fff; font-size: 1.2rem;"
+                                        data-i18n="home.catalog_testimonial1_text">The most elegant pastry experience in Morocco.</p>
+                                    <p class="story-text" style="color: rgba(255,255,255,0.8);"
+                                        data-i18n="home.catalog_testimonial1_author"> Saveurs du Maroc Magazine</p>
+
+                                    <div
+                                        style="margin-top: 2rem; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 2rem;">
+                                        <p class="story-text-lead" style="color: #fff; font-size: 1.1rem;"
+                                            data-i18n="home.catalog_testimonial2_text">Finally, guilt-free indulgence that actually tastes incredible.</p>
+                                        <p class="story-text" style="color: rgba(255,255,255,0.8);"
+                                            data-i18n="home.catalog_testimonial2_author"> Karim N., Morocco, Tangier</p>
+                                    </div>
+                                </div>
+                                <span class="page-number">13</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Page 16: NEW - Chef's Note -->
+                    <div class="page">
+                        <div class="page-content text-page left">
+                            <div class="page-inner-border">
+                                <div class="page-center-content" style="text-align: center;">
+                                    <div
+                                        style="width: 80px; height: 80px; background: #ddd; border-radius: 50%; margin: 0 auto 1.5rem; overflow: hidden;">
+                                        <!-- Placeholder for Chef's Image -->
+                                        <div
+                                            style="width: 100%; height: 100%; background: var(--gold-light); display: flex; align-items: center; justify-content: center; color: var(--gold-dark); font-size: 2rem;">
+                                            &#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                                    </div>
+                                    <h3 class="elegant-heading" style="margin-bottom: 1.5rem;"
+                                        data-i18n="home.catalog_page16_title">From the Heart</h3>
+                                    <p class="story-text" style="font-style: italic;"
+                                        data-i18n="home.catalog_page16_text">Every roll we bake is a promise kepta promise that you don't have to choose between your health and your happiness. Welcome to our family.</p>
+                                    <div class="signature-block"
+                                        style="margin-top: 2rem; padding: 0; text-align: center;"
+                                        data-i18n="home.catalog_page16_signature">Chef Aziza</div>
+                                </div>
+                                <span class="page-number">14</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Page 17: Franchising -->
+                    <div class="page">
+                        <div class="page-content text-page right highlight-bg">
+                            <div class="page-inner-border">
+                                <div class="franchise-content">
+                                    <span class="eyebrow-accent"
+                                        data-i18n="home.catalog_page17_label">Opportunity</span>
+                                    <h3 class="franchise-title" data-i18n="home.catalog_page17_title">Join the Heritage</h3>
+                                    <p data-i18n="home.catalog_page17_desc">Bring the Golden Sweet experience to your city.</p>
+
+                                    <div class="stat-grid">
+                                        <div class="stat-box">
+                                            <span class="stat-val">7+</span>
+                                            <span class="stat-lbl" data-i18n="home.catalog_franchise_years">Years</span>
+                                        </div>
+                                        <div class="stat-box">
+                                            <span class="stat-val">100%</span>
+                                            <span class="stat-lbl"
+                                                data-i18n="home.catalog_franchise_support">Support</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="franchise-footer">
+                                        <p data-i18n="home.catalog_franchise_roi">Roi: 7%</p>
+                                        <p data-i18n="home.catalog_franchise_inv">Inv: $150k - $250k</p>
+                                    </div>
+                                </div>
+                                <span class="page-number">15</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Page 18: Back Cover -->
+                    <div class="page" data-density="hard">
+                        <div class="page-content back-cover">
+                            <div class="cover-frame">
+                                <div class="b-contact-section">
+                                    <h3 data-i18n="home.catalog_back_contact">Contact</h3>
+                                    <p>+212 637-629395</p>
+                                    <p>@goldensweetchefaziza</p>
+                                </div>
+
+                                <div class="b-location-section">
+                                    <p data-i18n="home.catalog_back_location">Morocco, Tetouan and Tangier</p>
+                                    <p class="b-small" data-i18n="home.catalog_back_open">100% Healthy  -  100% Natural</p>
+                                </div>
+
+                                <div class="b-logo-small">
+                                    <img src="images/logo1.png" alt="Golden Sweet Logo">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Flipbook Controls -->
+                <div class="flipbook-controls">
+                    <button id="prev-btn" class="flip-btn" aria-label="Previous page">&#8592;</button>
+                    <div id="page-indicator" class="page-indicator">Page 1 / 10</div>
+                    <button id="next-btn" class="flip-btn" aria-label="Next page">&#8594;</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="product-section" id="featured" aria-labelledby="featured-heading" data-animate>
+            <div class="section-header">
+                <span class="section-kicker" data-i18n="home.featured_kicker">Featured</span>
+                <h2 id="featured-heading" data-i18n="home.featured_heading">Our Most Popular Rolls</h2>
+            </div>
+            <div class="product-grid">
+                <article class="product-card" data-product data-description="home.product_classic_desc"
+                    data-tags="products.tag_classic,products.tag_bestseller">
+                    <div class="product-media">
+                        <span class="product-badge product-badge--bright" data-i18n="home.product_classic_badge">Signature</span>
+                        <img src="images/featured1.jpeg"
+                            alt="Roul&eacute; &agrave; la cannelle napp&eacute; de gla&ccedil;age vanille"
+                            loading="lazy">
+                        <div class="product-actions-overlay"><button class="btn-icon" aria-label="Add to Cart"
+                                data-add-to-cart="MOKACHOCA Cake Moka and Dark Chocolate Gluten Free">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path
+                                        d="M9 20a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm7 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-7-4h7a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-7a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2z" />
+                                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-header">
+                            <h3 data-i18n="home.product_classic_name">MOKACHOCA Cake Moka and Dark Chocolate Gluten Free</h3>
+                            <p class="product-price">80&nbsp;MAD</p>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card" data-product data-description="home.product_choco_desc"
+                    data-tags="products.tag_indulgent,products.tag_gluten_free">
+                    <div class="product-media">
+                        <span class="product-badge product-badge--bright"
+                            data-i18n="home.product_choco_badge">Signature</span>
+                        <img src="images/featured2.jpeg"
+                            alt="Roul&eacute; napp&eacute; de chocolat noir et &eacute;clats de noisettes"
+                            loading="lazy">
+                        <div class="product-actions-overlay"><button class="btn-icon" aria-label="Add to Cart"
+                                data-add-to-cart="Dark Chocolate and Almond Tartlet">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path
+                                        d="M9 20a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm7 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-7-4h7a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-7a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2z" />
+                                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-header">
+                            <h3 data-i18n="home.product_choco_name">Dark Chocolate and Almond Tartlet</h3>
+                            <p class="product-price">25&nbsp;MAD</p>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card" data-product data-description="home.product_caramel_desc"
+                    data-tags="products.tag_signature,products.tag_premium">
+                    <div class="product-media">
+                        <span class="product-badge product-badge--bright"
+                            data-i18n="home.product_caramel_badge">Signature</span>
+                        <img src="images/featured3.png" alt="Roul&eacute; caramel aux noix de p&eacute;can"
+                            loading="lazy">
+                        <div class="product-actions-overlay"><button class="btn-icon" aria-label="Add to Cart" data-add-to-cart="Snow White">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path
+                                        d="M9 20a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm7 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-7-4h7a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-7a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2z" />
+                                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-header">
+                            <h3 data-i18n="home.product_caramel_name">Snow White</h3>
+                            <p class="product-price">80&nbsp;MAD</p>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+        <section class="product-section" id="bestsellers" aria-labelledby="bestsellers-heading" data-animate>
+            <div class="section-header">
+                <span class="section-kicker" data-i18n="home.bestsellers_kicker">Best-sellers</span>
+                <h2 id="bestsellers-heading" data-i18n="home.bestsellers_heading">Sweet Treats That Return Every Night</h2>
+            </div>
+            <div class="product-grid">
+                <article class="product-card" data-product data-description="home.product_box_desc"
+                    data-tags="products.tag_brunch,products.tag_6_flavors">
+                    <div class="product-media">
+                        <span class="product-badge product-badge--bright" data-i18n="home.product_box_badge">Best Sellers</span>
+                        <img src="images/bestseller1.jpeg" alt="Bote de six rouls Cinnamona aux glaages varis"
+                            loading="lazy">
+                        <div class="product-actions-overlay"><button class="btn-icon" aria-label="Add to Cart"
+                                data-add-to-cart="MARAVILLA Cake ganache Low Carb gluten free">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path
+                                        d="M9 20a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm7 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-7-4h7a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-7a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2z" />
+                                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-header">
+                            <h3 data-i18n="home.product_box_name">MARAVILLA Cake ganache Low Carb gluten free</h3>
+                            <p class="product-price">80&nbsp;MAD</p>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card" data-product data-description="home.product_raspberry_desc"
+                    data-tags="products.tag_no_artificial,products.tag_serve_cold">
+                    <div class="product-media">
+                        <span class="product-badge product-badge--bright"
+                            data-i18n="home.product_raspberry_badge">Best Sellers</span>
+                        <img src="images/bestseller2.jpeg" alt="Roul  la cannelle glaage framboise" loading="lazy">
+                        <div class="product-actions-overlay"><button class="btn-icon" aria-label="Add to Cart" data-add-to-cart="Mini Diet Almond Briouates (No Hydrogenated Oils, No White Flour)">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path
+                                        d="M9 20a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm7 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-7-4h7a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-7a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2z" />
+                                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-header">
+                            <h3 data-i18n="home.product_raspberry_name">Mini Diet Almond Briouates (No Hydrogenated Oils, No White Flour)</h3>
+                            <p class="product-price">500&nbsp;MAD</p>
+                        </div>
+                    </div>
+                </article>
+                <article class="product-card" data-product data-description="home.product_mocha_desc"
+                    data-tags="products.tag_energy,products.tag_lactose_free">
+                    <div class="product-media">
+                        <span class="product-badge product-badge--bright"
+                            data-i18n="home.product_mocha_badge">Best Sellers</span>
+                        <img src="images/bestseller3.jpeg" alt="Roul  la cannelle napp de crme caf et grains torrfis"
+                            loading="lazy">
+                        <div class="product-actions-overlay"><button class="btn-icon" aria-label="Add to Cart" data-add-to-cart="Diet Ghoriba with Nuts 200g">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path
+                                        d="M9 20a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm7 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-7-4h7a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-7a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2z" />
+                                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-header">
+                            <h3 data-i18n="home.product_mocha_name">Diet Ghoriba with Nuts 200g</h3>
+                            <p class="product-price">50&nbsp;MAD</p>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="testimonials" id="temoignages" aria-labelledby="testimonials-heading" data-animate>
+            <div class="section-header">
+                <span class="section-kicker" data-i18n="home.testimonials_kicker">Customer Love</span>
+                <h2 id="testimonials-heading"><span data-i18n="home.testimonials_heading_pre">Golden</span> <span
+                        style="color: #edc01f;" data-i18n="home.testimonials_heading_highlight">Sweet</span> <span
+                        data-i18n="home.testimonials_heading_post">Community</span></h2>
+            </div>
+            <div class="testimonial-carousel" data-testimonial-marquee>
+                <div class="testimonial-track" data-testimonial-track role="list" aria-live="off">
+                    <article class="testimonial-card" id="testimonial-1" role="listitem">
+                        <blockquote>
+                            <p data-i18n="home.testimonial_1_text">Delicious and healthy pastries — thank you, Chef, for the quality and the service 👏🏼👏🏼👏🏼</p>
+                        </blockquote>
+                        <div class="testimonial-stars" aria-label="5 out of 5 stars">
+                            &#9733;&#9733;&#9733;&#9733;&#9733;
+                        </div>
+                        <footer>
+                            <span class="testimonial-name" data-i18n="home.testimonial_1_author">Rajae Builler</span>
+                            <span class="testimonial-meta" data-i18n="home.testimonial_1_role">Verified Customer</span>
+                        </footer>
+                    </article>
+                    <article class="testimonial-card" id="testimonial-2" role="listitem">
+                        <blockquote>
+                            <p data-i18n="home.testimonial_2_text">A bakery specialized in healthy products, with no wheat and no sugar.</p>
+                        </blockquote>
+                        <div class="testimonial-stars" aria-label="5 out of 5 stars">
+                            &#9733;&#9733;&#9733;&#9733;&#9733;
+                        </div>
+                        <footer>
+                            <span class="testimonial-name" data-i18n="home.testimonial_2_author">Mohammed Alkathiri</span>
+                            <span class="testimonial-meta" data-i18n="home.testimonial_2_role">Regular Customer</span>
+                        </footer>
+                    </article>
+                    <article class="testimonial-card" id="testimonial-3" role="listitem">
+                        <blockquote>
+                            <p data-i18n="home.testimonial_3_text">Simply the best, thank God.</p>
+                        </blockquote>
+                        <div class="testimonial-stars" aria-label="5 out of 5 stars">
+                            &#9733;&#9733;&#9733;&#9733;&#9733;
+                        </div>
+                        <footer>
+                            <span class="testimonial-name" data-i18n="home.testimonial_3_author">TB Designer</span>
+                            <span class="testimonial-meta" data-i18n="home.testimonial_3_role">Verified Customer</span>
+                        </footer>
+                    </article>
+                    <article class="testimonial-card" id="testimonial-4" role="listitem">
+                        <blockquote>
+                            <p data-i18n="home.testimonial_4_text">Excellent quality and unbeatable flavor.</p>
+                        </blockquote>
+                        <div class="testimonial-stars" aria-label="5 out of 5 stars">
+                            &#9733;&#9733;&#9733;&#9733;&#9733;
+                        </div>
+                        <footer>
+                            <span class="testimonial-name" data-i18n="home.testimonial_4_author">Abkader Fetouhi</span>
+                            <span class="testimonial-meta" data-i18n="home.testimonial_4_role">Verified Customer</span>
+                        </footer>
+                    </article>
+                    </article>
+                    <article class="testimonial-card" id="testimonial-6" role="listitem">
+                        <blockquote>
+                            <p data-i18n="home.testimonial_6_text">Food: 5, Service: 5, Atmosphere: 5.</p>
+                        </blockquote>
+                        <div class="testimonial-stars" aria-label="5 out of 5 stars">
+                            &#9733;&#9733;&#9733;&#9733;&#9733;
+                        </div>
+                        <footer>
+                            <span class="testimonial-name" data-i18n="home.testimonial_6_author">Hala Saidani</span>
+                            <span class="testimonial-meta" data-i18n="home.testimonial_6_role">Verified Customer</span>
+                        </footer>
+                    </article>
+                    <article class="testimonial-card" id="testimonial-7" role="listitem">
+                        <blockquote>
+                            <p data-i18n="home.testimonial_7_text">Very good.</p>
+                        </blockquote>
+                        <div class="testimonial-stars" aria-label="5 out of 5 stars">
+                            &#9733;&#9733;&#9733;&#9733;&#9733;
+                        </div>
+                        <footer>
+                            <span class="testimonial-name" data-i18n="home.testimonial_7_author">Assia Moi</span>
+                            <span class="testimonial-meta" data-i18n="home.testimonial_7_role">Verified Customer</span>
+                        </footer>
+                    </article>
+                    <article class="testimonial-card" id="testimonial-8" role="listitem">
+                        <blockquote>
+                            <p data-i18n="home.testimonial_8_text">Good product.</p>
+                        </blockquote>
+                        <div class="testimonial-stars" aria-label="5 out of 5 stars">
+                            &#9733;&#9733;&#9733;&#9733;&#9733;
+                        </div>
+                        <footer>
+                            <span class="testimonial-name" data-i18n="home.testimonial_8_author">Abdel Auvergne</span>
+                            <span class="testimonial-meta" data-i18n="home.testimonial_8_role">Verified Customer</span>
+                        </footer>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+
+
+        <section class="community" aria-labelledby="community-heading" data-animate>
+            <div class="community-shell">
+                <div class="community-layout">
+                    <div class="community-copy">
+                        <span class="section-kicker" data-i18n="home.community_kicker">COMMUNITY</span>
+                        <h2 id="community-heading"><span data-i18n="home.community_heading_pre">Follow us on Instagram</span> <span class="highlight"
+                                data-i18n="home.community_heading_highlight">@goldensweetchefaziza</span></h2>
+                        <p class="community-lede" data-i18n="home.community_desc">Every day, we share our products and insights to welcome you into a healthier lifestyle, one where mindful choices, simple pleasures, and great taste unite us as one community. Follow us to be part of the Golden Sweet journey.</p>
+                        <dl class="community-highlights">
+                            <div>
+                                <dt data-i18n="home.community_stat1_val">+290</dt>
+                                <dd data-i18n="home.community_stat1_label">Posts shared in total</dd>
+                            </div>
+                            <div>
+                                <dt data-i18n="home.community_stat2_val">All week</dt>
+                                <dd data-i18n="home.community_stat2_label">moments shared day and night</dd>
+                            </div>
+                            <div>
+                                <dt data-i18n="home.community_stat3_val">1 hashtag</dt>
+                                <dd data-i18n="home.community_stat3_label">#GoldenSweet to find you</dd>
+                            </div>
+                        </dl>
+                        <div class="community-actions">
+                            <a class="btn btn-primary"
+                                href="https://www.instagram.com/goldensweetchefaziza/utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw%3D%3D#"
+                                target="_blank" rel="noopener noreferrer" data-i18n="home.community_cta">Follow Us on Instagram</a>
+                        </div>
+                    </div>
+                    <div class="community-media">
+                        <div class="community-gallery" data-circular-gallery data-bend="3" data-text-color="#ffffff"
+                            data-border-radius="0.05" data-scroll-ease="0.02">
+                            <div class="community-gallery__ring" data-gallery-ring>
+                                <figure class="community-gallery__item" data-gallery-item tabindex="0">
+                                    <img src="images/insta1.png" alt="Delivery available to Morocco, Tangier" loading="lazy"
+                                        data-i18n-alt="home.community_gallery_1_alt">
+                                    <figcaption>
+                                        <span class="community-gallery__handle">@goldensweetchefaziza</span>
+                                        <span class="community-gallery__note"
+                                            data-i18n="home.community_gallery_1_note">Delivery is available to the city of #tangier</span>
+                                    </figcaption>
+                                </figure>
+                                <figure class="community-gallery__item" data-gallery-item tabindex="0">
+                                    <img src="images/insta2.png" alt="Healthy Dubai chocolate without gluten and sugar"
+                                        loading="lazy" data-i18n-alt="home.community_gallery_2_alt">
+                                    <figcaption>
+                                        <span class="community-gallery__handle">@goldensweetchefaziza</span>
+                                        <span class="community-gallery__note"
+                                            data-i18n="home.community_gallery_2_note">Healthy Dubai chocolate without gluten and sugar.</span>
+                                    </figcaption>
+                                </figure>
+                                <figure class="community-gallery__item" data-gallery-item tabindex="0">
+                                    <img src="images/insta3.png" alt="Healthy pastry" loading="lazy"
+                                        data-i18n-alt="home.community_gallery_3_alt">
+                                    <figcaption>
+                                        <span class="community-gallery__handle">@goldensweetchefaziza</span>
+                                        <span class="community-gallery__note"
+                                            data-i18n="home.community_gallery_3_note">#Healthy ??</span>
+                                    </figcaption>
+                                </figure>
+                                <figure class="community-gallery__item" data-gallery-item tabindex="0">
+                                    <img src="images/insta4.png" alt="Healthy oat blueberry cheesecake" loading="lazy"
+                                        data-i18n-alt="home.community_gallery_4_alt">
+                                    <figcaption>
+                                        <span class="community-gallery__handle">@goldensweetchefaziza</span>
+                                        <span class="community-gallery__note"
+                                            data-i18n="home.community_gallery_4_note">#cheesecake_avoine_myrtille_pure_miel #healthy</span>
+                                    </figcaption>
+                                </figure>
+                                <figure class="community-gallery__item" data-gallery-item tabindex="0">
+                                    <img src="images/insta5.png" alt="Healthy pastries" loading="lazy"
+                                        data-i18n-alt="home.community_gallery_5_alt">
+                                    <figcaption>
+                                        <span class="community-gallery__handle">@goldensweetchefaziza</span>
+                                        <span class="community-gallery__note"
+                                            data-i18n="home.community_gallery_5_note">#healthyfood #goldensweet84 #patisseriedietetique #chef_aziza</span>
+                                    </figcaption>
+                                </figure>
+                                <figure class="community-gallery__item" data-gallery-item tabindex="0">
+                                    <img src="images/insta6.png" alt="Gluten-free, lactose-free, no added sugar"
+                                        loading="lazy" data-i18n-alt="home.community_gallery_6_alt">
+                                    <figcaption>
+                                        <span class="community-gallery__handle">@goldensweetchefaziza</span>
+                                        <span class="community-gallery__note"
+                                            data-i18n="home.community_gallery_6_note">#sansgluten #sanslactose #sans_sucre_ajouté</span>
+                                    </figcaption>
+                                </figure>
+                                <figure class="community-gallery__item" data-gallery-item tabindex="0">
+                                    <img src="images/insta7.png" alt="Dietary amlou dark chocolate fondant"
+                                        loading="lazy" data-i18n-alt="home.community_gallery_7_alt">
+                                    <figcaption>
+                                        <span class="community-gallery__handle">@goldensweetchefaziza</span>
+                                        <span class="community-gallery__note"
+                                            data-i18n="home.community_gallery_7_note">Fondant_diétetique amlou_choco_noir #healthyfood</span>
+                                    </figcaption>
+                                </figure>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="specials" aria-labelledby="specials-heading" data-animate>
+            <div class="section-header">
+                <span class="section-kicker" data-i18n="home.specials_kicker">For Every Moment</span>
+                <h2 id="specials-heading" data-i18n="home.specials_heading">Simplified Special Orders</h2>
+            </div>
+            <div class="specials-grid">
+                <article class="special-card" id="party-cakes">
+                    <h3 data-i18n="home.specials_party_title">Celebration Cakes</h3>
+                    <p data-i18n="home.specials_party_desc">Choose a seasonal flavor, a botanical glaze, and we'll create a custom centerpiece.</p>
+                    <a href="pages/contact.html" class="btn btn-primary" data-i18n="home.specials_party_cta">Celebrate Sweetly</a>
+                </article>
+                <article class="special-card" id="wholesale">
+                    <h3 data-i18n="home.specials_wholesale_title">Pro Program</h3>
+                    <p data-i18n="home.specials_wholesale_desc">Our healthy products complement the offerings of cafes, hotels, and concept stores with fastest delivery and highest quality.</p>
+                    <a href="pages/contact.html" class="btn btn-outline" data-i18n="home.specials_wholesale_cta">Let's Talk B2B</a>
+                </article>
+            </div>
+        </section>
+
+        <section class="compact-cta" id="shop" data-animate>
+            <div class="compact-cta-inner">
+                <div class="cta-message">
+                    <span class="cta-urgency"><img src="fire.png" alt="Fire" class="fire-icon"> <span
+                            data-i18n="home.cta_urgency">Limited Fresh Batches Daily</span></span>
+                    <h2 data-i18n="home.cta_heading">Craving Something Sweet &amp; Healthy?</h2>
+                    <p data-i18n="home.cta_desc">From Moroccan roots to modern wellness: fresh daily pastries built on our six-pillar standard, designed for taste, safety, and peace of mind.</p>
+                </div>
+                <div class="cta-action">
+                    <a href="pages/menu.html" class="cta-btn-premium">
+                        <span class="btn-text" data-i18n="home.cta_button">Order Now</span>
+                        <span class="btn-badge" data-i18n="home.cta_badge">Same-Day Delivery</span>
+                    </a>
+                    <span class="cta-trust" data-i18n="home.cta_trust">? 4.9/5 from 247+ orders</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer loaded dynamically from components/footer.html -->
+    <div id="footer-placeholder"></div>
+
+    <script src="js/header-loader.js" defer></script>
+    <script src="js/footer-loader.js" defer></script>
+    <script type="module">
+        import { initProvenanceGlobe } from './js/globe.js';
+        // Initialize globe when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initProvenanceGlobe);
+        } else {
+            initProvenanceGlobe();
+        }
+    </script>
+    <script src="js/cart-manager.js" defer></script>
+    <script src="js/modal.js" defer></script>
+    <script src="js/typing-animation.js" defer></script>
+    <script src="js/animations.js" defer></script>
+    <script src="js/page-flip.browser.js" defer></script>
+    <script src="js/flipbook.js" defer></script>
+    <script src="js/home-featured.js" defer></script>
+    <script src="js/i18n.js" defer type="module"></script>
+    <script src="js/mobile-scroll.js" defer></script>
+    <script src="script.js" defer type="module"></script>
+</body>
+
+</html>
+
+
+

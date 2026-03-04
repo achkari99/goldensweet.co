@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Golden Sweet</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Work+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/admin/admin.css">
+    <link rel="icon" href="/images/logo1.png" type="image/png">
+</head>
+
+<body>
+    <div id="app">
+        <!-- Login Screen -->
+        <div id="login-screen" class="login-container">
+            <div class="login-card">
+                <div class="login-header">
+                    <h1>Golden Sweet</h1>
+                    <p>Business Admin Dashboard</p>
+                </div>
+                <form id="login-form">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required placeholder="admin@goldensweet.ma">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" required placeholder="••••••••">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+                    <p id="login-error" class="error-message"></p>
+                </form>
+            </div>
+        </div>
+
+        <!-- Dashboard (hidden until logged in) -->
+        <div id="dashboard" class="dashboard hidden">
+            <!-- Sidebar -->
+            <aside id="admin-sidebar" class="sidebar">
+                <div class="sidebar-header">
+                    <h2>Golden Sweet</h2>
+                    <span>Business Control</span>
+                </div>
+                <nav class="sidebar-nav">
+                    <a href="#" class="nav-item active" data-section="overview">
+                        <svg viewBox="0 0 24 24">
+                            <rect x="3" y="3" width="7" height="7" />
+                            <rect x="14" y="3" width="7" height="7" />
+                            <rect x="14" y="14" width="7" height="7" />
+                            <rect x="3" y="14" width="7" height="7" />
+                        </svg>
+                        Dashboard
+                    </a>
+                    <a href="#" class="nav-item" data-section="orders">
+                        <svg viewBox="0 0 24 24">
+                            <rect x="1" y="4" width="22" height="16" rx="2" ry="2" />
+                            <line x1="1" y1="10" x2="23" y2="10" />
+                        </svg>
+                        Orders
+                    </a>
+                    <a href="#" class="nav-item" data-section="products">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+                            <line x1="3" y1="6" x2="21" y2="6" />
+                            <path d="M16 10a4 4 0 0 1-8 0" />
+                        </svg>
+                        Products
+                    </a>
+                    <a href="#" class="nav-item" data-section="shops">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                            <circle cx="12" cy="10" r="3" />
+                        </svg>
+                        Shops
+                    </a>
+                    <a href="#" class="nav-item" data-section="faqs">
+                        <svg viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+                            <line x1="12" y1="17" x2="12.01" y2="17" />
+                        </svg>
+                        FAQs
+                    </a>
+                    <a href="#" class="nav-item" data-section="contacts">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                            <polyline points="22,6 12,13 2,6" />
+                        </svg>
+                        Messages
+                    </a>
+                    <a href="#" class="nav-item" data-section="settings">
+                        <svg viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="3" />
+                            <path
+                                d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" />
+                        </svg>
+                        Settings
+                    </a>
+                </nav>
+                <div class="sidebar-footer">
+                    <button id="logout-btn" class="btn btn-outline btn-small">Logout</button>
+                </div>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="main-content">
+                <header class="topbar">
+                    <div class="topbar-left">
+                        <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Open menu" aria-controls="admin-sidebar" aria-expanded="false">&#9776;</button>
+                        <h1 id="page-title">Dashboard</h1>
+                    </div>
+                    <div class="topbar-actions">
+                        <select id="admin-lang-select" class="btn btn-outline btn-small" aria-label="Language">
+                            <option value="en">EN</option>
+                            <option value="fr">FR</option>
+                            <option value="ar">AR</option>
+                        </select>
+                        <a href="/" target="_blank" class="btn btn-outline btn-small">View Site</a>
+                    </div>
+                </header>
+
+                <!-- Overview Section -->
+                <section id="section-overview" class="content-section active">
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <h3 id="stat-products">0</h3>
+                            <p>Products</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3 id="stat-shops">0</h3>
+                            <p>Shops</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3 id="stat-faqs">0</h3>
+                            <p>FAQs</p>
+                        </div>
+                        <div class="stat-card highlight">
+                            <h3 id="stat-contacts">0</h3>
+                            <p>Total Activity</p>
+                        </div>
+                    </div>
+                    <div class="quick-actions">
+                        <h2>Business Control</h2>
+                        <div class="action-buttons">
+                            <button class="btn btn-primary" onclick="Admin.showSection('orders')">View Orders
+                                History</button>
+                            <button class="btn btn-secondary" onclick="Admin.showSection('products')">Manage Stock
+                                Levels</button>
+                            <button class="btn btn-outline" onclick="Admin.exportData()">Export Data Backup</button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Orders Section -->
+                <section id="section-orders" class="content-section">
+                    <div class="section-header">
+                        <h2>Order History</h2>
+                        <div class="section-actions">
+                            <span class="badge badge-replied">Tracked from WhatsApp Clicks</span>
+                            <button class="btn btn-primary" onclick="Admin.openModal('order')">+ Add Order</button>
+                        </div>
+                    </div>
+                    <div class="data-table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Customer</th>
+                                    <th>Items</th>
+                                    <th>Total</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="orders-table"></tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Products Section -->
+                <section id="section-products" class="content-section">
+                    <div class="section-header">
+                        <h2>Products</h2>
+                        <button class="btn btn-primary" onclick="Admin.openModal('product')">+ Add Product</button>
+                    </div>
+                    <div class="data-table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Category</th>
+                                    <th>Price</th>
+                                    <th>Inventory</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="products-table"></tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Shops Section -->
+                <section id="section-shops" class="content-section">
+                    <div class="section-header">
+                        <h2>Shops</h2>
+                        <button class="btn btn-primary" onclick="Admin.openModal('shop')">+ Add Shop</button>
+                    </div>
+                    <div class="data-table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Address</th>
+                                    <th>Phone</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="shops-table"></tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- FAQs Section -->
+                <section id="section-faqs" class="content-section">
+                    <div class="section-header">
+                        <h2>FAQs</h2>
+                        <button class="btn btn-primary" onclick="Admin.openModal('faq')">+ Add FAQ</button>
+                    </div>
+                    <div class="data-table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Question</th>
+                                    <th>Category</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="faqs-table"></tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Contacts Section -->
+                <section id="section-contacts" class="content-section">
+                    <div class="section-header">
+                        <h2>Messages</h2>
+                    </div>
+                    <div class="data-table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Subject</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="contacts-table"></tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Settings Section -->
+                <section id="section-settings" class="content-section">
+                    <div class="section-header">
+                        <h2>Settings</h2>
+                    </div>
+                    <form id="settings-form" class="settings-form">
+                        <div class="form-group">
+                            <label for="site-name">Site Name</label>
+                            <input type="text" id="site-name" name="siteName" value="Golden Sweet">
+                        </div>
+                        <div class="form-group">
+                            <label for="site-phone">Phone</label>
+                            <input type="tel" id="site-phone" name="phone" value="+212 637-629395">
+                        </div>
+                        <div class="form-group">
+                            <label for="site-email">Email</label>
+                            <input type="email" id="site-email" name="email" value="contact@goldensweet.co">
+                        </div>
+                        <div class="form-group">
+                            <label for="site-address">Address</label>
+                            <textarea id="site-address" name="address" rows="2">Morocco, Tetouan</textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="delivery-fee">Delivery Fee (MAD)</label>
+                            <input type="number" id="delivery-fee" name="deliveryFee" min="0" step="1" value="40">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Save Settings</button>
+                    </form>
+                </section>
+
+            </main>
+        </div>
+        <div id="mobile-sidebar-backdrop" class="mobile-sidebar-backdrop hidden" aria-hidden="true"></div>
+
+        <!-- Modal -->
+        <div id="modal" class="modal hidden">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 id="modal-title">Add Item</h3>
+                    <button class="modal-close" onclick="Admin.closeModal()">&times;</button>
+                </div>
+                <div class="modal-body" id="modal-body">
+                    <!-- Dynamic form content -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/admin/admin.js" defer></script>
+</body>
+
+</html>

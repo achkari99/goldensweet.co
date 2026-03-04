@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <script>
+        // Add loading class immediately to prevent Flash of Untranslated Content
+        document.documentElement.classList.add('i18n-loading');
+
+        // Safety timeout
+        setTimeout(() => {
+            document.documentElement.classList.remove('i18n-loading');
+        }, 3000);
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu | Golden Sweet</title>
+    <meta name="description"
+        content="Browse our full range of plant-based cinnamon rolls, cannelés, pastéis de nata and drinks.">
+    <meta name="theme-color" content="#7f9c89">
+    <link rel="icon" href="../images/logo1.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2family=Work+Sans:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../css/cart-hover.css">
+    <link rel="stylesheet" href="../css/rtl.css">
+    <link rel="stylesheet" href="../css/responsive-fix.css">
+    <link rel="stylesheet" href="../css/pages.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="../css/interactive.css">
+</head>
+
+<body id="top">
+    <a class="skip-link" href="#main-content" data-i18n="common.skip_to_content">Skip to content</a>
+
+    <!-- Shared header will be loaded here -->
+    <div id="header-placeholder"></div>
+
+    <main id="main-content">
+        <section class="page-hero" data-animate>
+            <div class="page-hero-content">
+                <span class="section-kicker" data-i18n="menu.hero_subtitle">Discover our full range of artisan treats</span>
+                <h1 data-i18n="menu.hero_title">Our Menu</h1>
+                <p class="page-hero-lead lead-en">
+                    International food with Moroccan recipes. Every recipe meets all six pillars of healthy indulgence:
+                    <span class="text-gold">lactose-free</span>, <span class="text-gold">sugar-free</span>, <span class="text-gold">no white flour</span> <span>used</span>, <span>using</span> <span class="text-gold">natural fermentation</span>, <span class="text-gold">gluten-free</span>, and free from <span class="text-gold">hydrogenated</span> <span class="text-gold">oil</span>.
+                    While others hit one or two, Golden Sweet delivers all six in every bite.
+                </p>
+                <p class="page-hero-lead lead-ar" dir="rtl" lang="ar">
+                    ????? ????? ?????? ??????. ?? ???? ????? ???????? ????? ?????? ??????:
+                    <span class="text-gold">???? ?? ????????</span>? <span class="text-gold">???? ?? ?????</span>? <span class="text-gold">?? ??? ???? ????</span> <span>???????</span>? <span>????????</span> <span class="text-gold">????? ?????</span>? <span class="text-gold">???? ?? ????????</span>? ????? ?? <span class="text-gold">?????? ????????</span>.
+                    ????? ???? ??????? ?????? ?? ????? ???? ??? ????? ???? ???? ??????? ????? ?? ?? ????.
+                </p>
+            </div>
+        </section>
+
+                <section class="section-container" data-animate>
+            <!-- Filters -->
+            <div class="catalog-filters">
+                <button class="filter-btn active" data-filter="all" data-i18n="menu.filter_all">All</button>
+                <button class="filter-btn" data-filter="vegetarian" data-i18n="menu.filter_vegetarian">Vegetarian</button>
+                <button class="filter-btn" data-filter="gluten-free" data-i18n="menu.filter_gluten_free">Gluten Free</button>
+                <button class="filter-btn" data-filter="low-carb" data-i18n="menu.filter_low_carb">Low Carb</button>
+                <button class="filter-btn" data-filter="healthy" data-i18n="menu.filter_healthy">Healthy</button>
+                <button class="filter-btn" data-filter="raw-materials" data-i18n="menu.filter_raw_materials">Raw Materials</button>
+            </div>
+
+            <!-- Product Grid -->
+            <div class="product-grid"></div>
+        </section>
+
+        <section class="cta-banner" data-animate>
+            <div class="cta-content">
+                <h2 data-i18n="menu_products.custom_title">Custom orders welcome!</h2>
+                <p data-i18n="menu_products.custom_desc">Need a special flavor or larger quantity? We're happy to create custom orders.</p>
+                <a href="contact.html" class="btn btn-dark" data-i18n="menu_products.custom_btn">Request Custom Order</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer loaded dynamically from components/footer.html -->
+    <div id="footer-placeholder"></div>
+
+    <script src="../js/cart-manager.js" defer></script>
+    <script src="../script.js" defer type="module"></script>
+    <script src="../js/modal.js" defer></script>
+    <script src="../js/animations.js" defer></script>
+    <script src="../js/menu-products.js" defer></script>
+    <script src="../script.js" defer type="module"></script>
+    <script src="../js/i18n.js" defer type="module"></script>
+    <script>
+
+        // Simple filter functionality with support for multiple categories
+        const normalizeCategory = (value) => {
+            return String(value || '')
+                .trim()
+                .toLowerCase()
+                .replace(/\s+/g, '-');
+        };
+
+        const normalizeName = (value) => {
+            return String(value || '')
+                .toLowerCase()
+                .replace(/[_,-]/g, ' ')
+                .replace(/\s+/g, ' ')
+                .trim();
+        };
+
+        const CATEGORY_ORDER = ['vegetarian', 'gluten-free', 'low-carb', 'healthy', 'raw-materials'];
+
+        const resolveCategories = (rawCategory) => {
+            const raw = normalizeCategory(rawCategory);
+            if (!raw) return [];
+
+            const valid = CATEGORY_ORDER;
+            const validSet = new Set(valid);
+            const normalized = raw.replace(/[_\s]+/g, '-');
+            const set = new Set();
+
+            const tryExpandComposite = (part) => {
+                for (let i = 0; i < valid.length; i++) {
+                    for (let j = i + 1; j < valid.length; j++) {
+                        const a = valid[i];
+                        const b = valid[j];
+                        if (part === `${a}-${b}` || part === `${b}-${a}`) {
+                            set.add(a);
+                            set.add(b);
+                            return true;
+                        }
+                    }
+                }
+                return false;
+            };
+
+            normalized
+                .split(/[|,/]+/)
+                .map((part) => part.trim())
+                .filter(Boolean)
+                .forEach((part) => {
+                    if (validSet.has(part)) {
+                        set.add(part);
+                        return;
+                    }
+                    tryExpandComposite(part);
+                });
+
+            return Array.from(set);
+        };
+
+        const formatCategoryLabel = (value) => String(value || '').replace(/-/g, ' ');
+
+        const getCardNameKey = (card) => {
+            const keySource = card.dataset.nameEn || card.dataset.nameAr || card.querySelector('h3')?.textContent || '';
+            return normalizeName(keySource);
+        };
+
+        const buildMergedCategoryIndex = () => {
+            const index = new Map();
+
+            document.querySelectorAll('.product-card').forEach((card) => {
+                const key = getCardNameKey(card);
+                if (!key) return;
+
+                const categories = resolveCategories(card.dataset.category);
+                if (!index.has(key)) {
+                    index.set(key, new Set());
+                }
+                categories.forEach((category) => index.get(key).add(category));
+            });
+
+            const orderedIndex = new Map();
+            index.forEach((set, key) => {
+                const ordered = CATEGORY_ORDER.filter((category) => set.has(category));
+                orderedIndex.set(key, ordered);
+            });
+
+            return orderedIndex;
+        };
+
+        const applyBadgeLabel = (card, filter, mergedCategoryIndex) => {
+            const badge = card.querySelector('.product-badge');
+            if (!badge) return;
+            const inStock = !card.querySelector('[aria-disabled=\"true\"]');
+            if (!inStock) {
+                badge.textContent = 'Sold Out';
+                return;
+            }
+
+            let label = '';
+            if (filter === 'all') {
+                const key = getCardNameKey(card);
+                const categories = (key && mergedCategoryIndex.get(key)) || resolveCategories(card.dataset.category);
+                label = categories.map(formatCategoryLabel).join(', ');
+            } else {
+                label = formatCategoryLabel(filter);
+            }
+
+            badge.textContent = label || formatCategoryLabel(card.dataset.category);
+        };
+
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const filter = btn.dataset.filter;
+                const mergedCategoryIndex = buildMergedCategoryIndex();
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                document.querySelectorAll('.product-card').forEach(card => {
+                    const categories = resolveCategories(card.dataset.category);
+                    const isMatch =
+                        filter === 'all' ||
+                        categories.includes(filter);
+                    if (isMatch) {
+                        card.style.display = '';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                    applyBadgeLabel(card, filter, mergedCategoryIndex);
+                });
+
+                // When "all" is selected, keep only one card per exact product name.
+                if (filter === 'all') {
+                    const seen = new Set();
+                    document.querySelectorAll('.product-card').forEach(card => {
+                        if (card.style.display === 'none') return;
+                        const keySource = card.dataset.nameEn || card.dataset.nameAr || card.querySelector('h3')?.textContent || '';
+                        const key = normalizeName(keySource);
+                        if (!key) return;
+                        if (seen.has(key)) {
+                            card.style.display = 'none';
+                            return;
+                        }
+                        seen.add(key);
+                    });
+                }
+            });
+        });
+    </script>
+    <script src="../js/header-loader.js" defer></script>
+    <script src="../js/footer-loader.js" defer></script>
+</body>
+
+</html>
+
+

@@ -1,0 +1,267 @@
+/* ============================================
+   DARK MODE - Color scheme and toggle
+   ============================================ */
+
+:root {
+    /* Light mode colors (default) */
+    --bg-primary: #ffffff;
+    --bg-secondary: #FFFBF5;
+    --bg-tertiary: #E8D4B8;
+    --text-primary: #2C2416;
+    --text-secondary: #d4a817;
+    --text-muted: #7a7065;
+    --accent-primary: #edc01f;
+    --accent-secondary: #d4a817;
+    --border-color: #e8d8c8;
+    --card-bg: #ffffff;
+    --input-bg: #ffffff;
+    --shadow-sm: rgba(0, 0, 0, 0.05);
+    --shadow-md: rgba(0, 0, 0, 0.1);
+    --shadow-lg: rgba(0, 0, 0, 0.15);
+    --overlay-opacity: 0;
+}
+
+[data-theme="dark"] {
+    /* Dark mode colors */
+    --bg-primary: #1a1612;
+    --bg-secondary: #24201a;
+    --bg-tertiary: #2f2b24;
+    --text-primary: #f5f0e8;
+    --text-secondary: #D4C4A8;
+    --text-muted: #8a826f;
+    --accent-primary: #D4A574;
+    --accent-secondary: #B8824A;
+    --border-color: #3a342a;
+    --card-bg: #252119;
+    --input-bg: #2a251d;
+    --shadow-sm: rgba(0, 0, 0, 0.3);
+    --shadow-md: rgba(0, 0, 0, 0.4);
+    --shadow-lg: rgba(0, 0, 0, 0.5);
+    --overlay-opacity: 0.85;
+}
+
+/* Smooth transition for theme switch */
+body,
+.site-header,
+.site-footer,
+.btn,
+input,
+textarea,
+select {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Dark Mode Toggle Button */
+.theme-toggle {
+    position: fixed;
+    bottom: 2rem;
+    left: 2rem;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--accent-primary);
+    border: none;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 4px 16px var(--shadow-md);
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1) rotate(20deg);
+    box-shadow: 0 6px 24px var(--shadow-lg);
+}
+
+.theme-toggle:active {
+    transform: scale(0.95);
+}
+
+.theme-toggle .icon-sun,
+.theme-toggle .icon-moon {
+    position: absolute;
+    transition: all 0.3s ease;
+}
+
+.theme-toggle .icon-sun {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+}
+
+.theme-toggle .icon-moon {
+    opacity: 0;
+    transform: rotate(180deg) scale(0);
+}
+
+[data-theme="dark"] .theme-toggle .icon-sun {
+    opacity: 0;
+    transform: rotate(-180deg) scale(0);
+}
+
+[data-theme="dark"] .theme-toggle .icon-moon {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+}
+
+/* Apply theme colors to elements */
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+.site-header {
+    background-color: var(--bg-primary);
+    border-bottom-color: var(--border-color);
+}
+
+.promo-banner {
+    background-color: var(--accent-primary);
+}
+
+.site-footer {
+    background-color: var(--bg-secondary);
+    color: var(--text-secondary);
+}
+
+/* ==================================
+   DARK MODE BACKGROUND HANDLING
+   ================================== */
+
+/* Hero Section - Replace background in dark mode */
+[data-theme="dark"] .hero-section {
+    background-image: url('../assets/dark-hero-bg.png') !important;
+    background-color: var(--bg-secondary);
+    background-blend-mode: multiply;
+}
+
+/* Sections with background images - Add dark overlay */
+[data-theme="dark"] section[style*="background-image"]::before,
+[data-theme="dark"] .featured::before,
+[data-theme="dark"] .story::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(26, 26, 26, var(--overlay-opacity));
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Ensure content is above overlay */
+[data-theme="dark"] section[style*="background-image"]>*,
+[data-theme="dark"] .featured>*,
+[data-theme="dark"] .story>* {
+    position: relative;
+    z-index: 2;
+}
+
+/* Pattern backgrounds - dim in dark mode */
+[data-theme="dark"] body::before,
+[data-theme="dark"] section::before {
+    opacity: 0.3;
+}
+
+/* Events section with custom dark background */
+[data-theme="dark"] .events-modern {
+    background: url('../assets/dark-section-bg.png'), linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+    background-size: cover;
+    background-blend-mode: overlay;
+}
+
+/* Community section */
+[data-theme="dark"] .community {
+    background-color: var(--bg-secondary);
+}
+
+/* Dim images slightly in dark mode for better blend */
+[data-theme="dark"] img:not(.brand-mark img):not([alt*="icon"]) {
+    opacity: 0.92;
+    transition: opacity 0.3s ease;
+}
+
+[data-theme="dark"] img:hover {
+    opacity: 1;
+}
+
+/* Cards and sections */
+.product-card,
+.service-card,
+.team-card,
+.value-card-large,
+.event-card {
+    background-color: var(--card-bg);
+    border-color: var(--border-color);
+    box-shadow: 0 4px 12px var(--shadow-sm);
+}
+
+.product-card:hover,
+.service-card:hover,
+.team-card:hover {
+    box-shadow: 0 8px 24px var(--shadow-md);
+}
+
+/* Forms */
+input,
+textarea,
+select {
+    background-color: var(--input-bg);
+    color: var(--text-primary);
+    border-color: var(--border-color);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: var(--accent-primary);
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: var(--text-muted);
+}
+
+/* Buttons */
+.btn-primary {
+    background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+}
+
+.btn-ghost {
+    border-color: var(--accent-primary);
+    color: var(--accent-primary);
+}
+
+[data-theme="dark"] .btn-ghost:hover {
+    background: var(--accent-primary);
+    color: white;
+}
+
+/* Section backgrounds */
+[data-theme="dark"] section {
+    background-color: var(--bg-primary);
+}
+
+[data-theme="dark"] .section-kicker {
+    color: var(--accent-primary);
+}
+
+/* Testimonials and quotes */
+[data-theme="dark"] blockquote {
+    border-left-color: var(--accent-primary);
+    background-color: var(--bg-secondary);
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .theme-toggle {
+        bottom: 1rem;
+        left: 1rem;
+        width: 48px;
+        height: 48px;
+    }
+}

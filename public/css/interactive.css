@@ -1,0 +1,410 @@
+/* ============================================
+   INTERACTIVE.CSS - Interactive Components
+   ============================================ */
+
+/* Modal/Lightbox */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background: white;
+    border-radius: 16px;
+    max-width: 90vw;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    transform: scale(0.7);
+    transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.modal-overlay.active .modal-content {
+    transform: scale(1);
+}
+
+.modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.modal-close:hover {
+    background: rgba(0, 0, 0, 0.8);
+    transform: rotate(90deg);
+}
+
+/* Quick View Modal (Product) */
+.quick-view {
+    padding: 2rem;
+    max-width: 800px;
+}
+
+.quick-view-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.quick-view-image {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.quick-view-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.quick-view-info h2 {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+    color: #2C2416;
+}
+
+.quick-view-price {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #edc01f;
+    margin-bottom: 1rem;
+}
+
+.quick-view-tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+}
+
+.quick-view-tag {
+    padding: 0.35rem 0.75rem;
+    background: #E8D4B8;
+    color: #d4a817;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* Tooltip */
+.tooltip {
+    position: relative;
+    cursor: help;
+}
+
+.tooltip::before {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%) scale(0);
+    background: #2C2416;
+    color: white;
+    padding: 0.5rem 0.75rem;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    white-space: nowrap;
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    pointer-events: none;
+    z-index: 100;
+}
+
+.tooltip::after {
+    content: '';
+    position: absolute;
+    bottom: 115%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: #2C2416;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.tooltip:hover::before {
+    transform: translateX(-50%) scale(1);
+    opacity: 1;
+}
+
+.tooltip:hover::after {
+    opacity: 1;
+}
+
+/* Badge with Animation */
+.badge-pulse {
+    position: relative;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.badge-pulse::before {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border: 2px solid currentColor;
+    border-radius: inherit;
+    opacity: 0.5;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+/* Status Indicator */
+.status-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.status-indicator::before {
+    content: '';
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.status-open {
+    background: #d4edda;
+    color: #155724;
+}
+
+.status-open::before {
+    background: #28a745;
+}
+
+.status-closed {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.status-closed::before {
+    background: #dc3545;
+}
+
+/* Image Zoom on Hover */
+.image-zoom {
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.image-zoom img {
+    transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    display: block;
+    width: 100%;
+}
+
+.image-zoom:hover img {
+    transform: scale(1.1);
+}
+
+/* Floating Action Button */
+.fab {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #edc01f, #d4a817);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0 4px 20px rgba(127, 156, 137, 0.4);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    z-index: 1000;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.fab:hover {
+    transform: scale(1.1) rotate(10deg);
+    box-shadow: 0 6px 30px rgba(127, 156, 137, 0.6);
+}
+
+.fab:active {
+    transform: scale(0.95);
+}
+
+/* Cart Badge */
+.cart-badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #edc01f;
+    color: #ffffff;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 4px;
+    border-radius: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: 700;
+    line-height: 1;
+    transform: scale(0);
+    transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.cart-badge.active {
+    transform: scale(1);
+}
+
+.cart-badge.bump {
+    animation: bounceIn 0.5s ease;
+}
+
+/* Search Box */
+.search-box {
+    position: relative;
+    max-width: 500px;
+    margin: 0 auto 2rem;
+}
+
+.search-input {
+    width: 100%;
+    padding: 0.75rem 3rem 0.75rem 1rem;
+    border: 2px solid #E8D4B8;
+    border-radius: 999px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: #edc01f;
+    box-shadow: 0 0 0 4px rgba(127, 156, 137, 0.1);
+}
+
+.search-icon {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #edc01f;
+}
+
+/* Filter Pills */
+.filter-pills {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.filter-pill {
+    padding: 0.6rem 1.25rem;
+    border: 2px solid #E8D4B8;
+    border-radius: 999px;
+    background: white;
+    color: #d4a817;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.filter-pill:hover {
+    transform: translateY(-3px);
+    border-color: #edc01f;
+}
+
+.filter-pill.active {
+    background: #cd9f47;
+    color: white;
+    border-color: #edc01f;
+    transform: scale(1.05);
+}
+
+/* Accordion Improvements */
+.accordion-item {
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.accordion-item:hover {
+    border-color: #edc01f;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.accordion-header {
+    padding: 1.25rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    transition: background 0.3s ease;
+}
+
+.accordion-header:hover {
+    background: #FFFBF5;
+}
+
+.accordion-icon {
+    width: 24px;
+    height: 24px;
+    transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.accordion-item.active .accordion-icon {
+    transform: rotate(180deg);
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.4s ease;
+}
+
+.accordion-item.active .accordion-content {
+    max-height: 500px;
+    padding: 0 1.25rem 1.25rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .quick-view-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .fab {
+        bottom: 1rem;
+        right: 1rem;
+        width: 50px;
+        height: 50px;
+    }
+}

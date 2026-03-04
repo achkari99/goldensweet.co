@@ -1,0 +1,183 @@
+/* ============================================
+   COMPACT CTA - Direct & Persuasive
+   ============================================ */
+
+.compact-cta {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    padding: 3rem 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.compact-cta::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+        radial-gradient(circle at 20% 50%, rgba(237, 192, 31, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 50%, rgba(237, 192, 31, 0.15) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.compact-cta-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* Message Side */
+.cta-message {
+    flex: 1;
+}
+
+.cta-urgency {
+    display: inline-block;
+    background: rgba(237, 192, 31, 0.2);
+    color: #edc01f;
+    font-size: 0.85rem;
+    font-weight: 700;
+    padding: 0.5rem 1rem;
+    border-radius: 999px;
+    margin-bottom: 1rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.fire-icon {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 0.3rem;
+}
+
+
+.cta-message h2 {
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0 0 0.8rem 0;
+    line-height: 1.2;
+}
+
+.cta-message p {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0;
+    max-width: 500px;
+}
+
+/* Action Side */
+.cta-action {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 1rem;
+}
+
+.cta-btn-premium {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(135deg, #edc01f 0%, #f5d14a 100%);
+    color: #1a1a1a;
+    padding: 1.5rem 3rem;
+    border-radius: 16px;
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 1.3rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow:
+        0 10px 40px rgba(237, 192, 31, 0.4),
+        0 0 0 0 rgba(237, 192, 31, 0.5);
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-btn-premium::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s ease;
+}
+
+.cta-btn-premium:hover::before {
+    left: 100%;
+}
+
+.cta-btn-premium:hover {
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 15px 50px rgba(237, 192, 31, 0.6);
+    text-decoration: none;
+}
+
+.btn-text {
+    font-size: 1.3rem;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+}
+
+.btn-badge {
+    font-size: 0.75rem;
+    font-weight: 600;
+    opacity: 0.8;
+    margin-top: 0.3rem;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+}
+
+.cta-trust {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .compact-cta-inner {
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
+    }
+
+    .cta-message p {
+        max-width: 100%;
+    }
+
+    .cta-action {
+        align-items: center;
+    }
+
+    .cta-btn-premium {
+        padding: 1.3rem 2.5rem;
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 500px) {
+    .compact-cta {
+        padding: 2.5rem 1.5rem;
+    }
+
+    .cta-message h2 {
+        font-size: 1.8rem;
+    }
+
+    .cta-btn-premium {
+        width: 100%;
+        padding: 1.2rem 2rem;
+    }
+}

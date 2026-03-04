@@ -1,0 +1,45 @@
+<!-- Site Header - Shared across all pages -->
+<header class="site-header" role="banner">
+<div class="primary-nav" data-sticky>
+        <div class="nav-inner">
+            <a class="brand-mark" href="INDEX_LINK" aria-label="Cinnamona by Mona Home">
+                <span class="brand-name">Golden Sweet</span>
+                <span class="brand-tagline" data-i18n="footer.brand_tagline">DIETARY PASTRY</span>
+            </a>
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-navigation">
+                <span class="sr-only">Toggle navigation</span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </button>
+            <nav class="nav-links" id="site-navigation" aria-label="Primary navigation">
+                <ul>
+                    <li><a href="HOME_LINK" data-page="home" data-i18n="nav.home">Home</a></li>
+                    <li><a href="LAMAISON_LINK" data-page="lamaison" data-i18n="nav.lamaison">Our House</a></li>
+                    <li><a href="SERVICES_LINK" data-page="services" data-i18n="nav.services">Our Services</a></li>
+                    <li><a href="CATALOGUE_LINK" data-page="catalogue" data-i18n="nav.catalogue">Catalog</a></li>
+                    <li><a href="FRANCHISING_LINK" data-page="franchising" data-i18n="nav.franchising">Franchising</a>
+                    </li>
+                    <li><a href="CONTACT_LINK" data-page="contact" data-i18n="nav.contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="nav-actions">
+                <a class="btn btn-primary" href="CATALOGUE_LINK" data-i18n="nav.order">Order Now</a>
+                <button class="cart-icon-button" type="button" aria-label="View cart (0 items)">
+                    <svg class="cart-icon-svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        aria-hidden="true">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg>
+                    <span class="cart-badge" id="cart-count" style="display: none;">0</span>
+                </button>
+                <div class="lang-selector" role="group" aria-label="Language selector">
+                    <button class="lang-btn active" data-lang-switch="en" type="button" aria-current="true">EN</button>
+                    <span class="lang-separator" aria-hidden="true">|</span>
+                    <button class="lang-btn" data-lang-switch="ar" type="button">AR</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

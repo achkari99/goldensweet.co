@@ -1,0 +1,591 @@
+﻿/**
+ * RTL (Right-to-Left) Support for Arabic
+ * Applied when html[dir="rtl"] is set
+ */
+
+/* Base RTL direction */
+html[dir="rtl"] {
+    direction: rtl;
+    text-align: right;
+}
+
+/* Navigation */
+html[dir="rtl"] .nav-inner {
+    grid-template-columns: auto auto 1fr;
+}
+
+html[dir="rtl"] .nav-links {
+    order: 0;
+}
+
+html[dir="rtl"] .brand-mark {
+    order: 1;
+    text-align: center;
+}
+
+html[dir="rtl"] .nav-actions {
+    order: -1;
+    justify-content: flex-start;
+}
+
+html[dir="rtl"] .nav-links ul {
+    flex-direction: row-reverse;
+}
+
+/* Disable blue selection on phone version for interactive elements */
+@media (max-width: 768px) {
+
+    .btn,
+    a,
+    button,
+    .product-card,
+    .value-card,
+    .nav-toggle,
+    .filter-btn {
+        user-select: none;
+        -webkit-user-select: none;
+    }
+}
+
+/* Hero section */
+html[dir="rtl"] .hero-copy {
+    text-align: center;
+}
+
+html[dir="rtl"] .hero-section {
+    direction: ltr;
+}
+
+
+
+html[dir="rtl"] .hero-metadata {
+    direction: rtl;
+}
+
+html[dir="rtl"] .hero-overlay-card {
+    left: auto;
+    right: 10%;
+}
+
+
+/* Value cards and grids */
+html[dir="rtl"] .value-card {
+    text-align: right;
+}
+
+html[dir="rtl"] .value-grid {
+    direction: rtl;
+}
+
+/* Timeline */
+html[dir="rtl"] .timeline {
+    direction: rtl;
+}
+
+html[dir="rtl"] .timeline article {
+    text-align: right;
+}
+
+/* Timeline RTL: flip line and markers to the right */
+html[dir="rtl"] .timeline {
+    direction: rtl;
+    border-left: none;
+    border-right: 3px solid var(--accent);
+    padding-left: 0;
+    padding-right: 1.5rem;
+}
+
+html[dir="rtl"] .timeline article {
+    padding-left: 0;
+    padding-right: 1.25rem;
+}
+
+html[dir="rtl"] .timeline article::before {
+    left: auto;
+    right: -0.85rem;
+}
+
+html[dir="rtl"] .timeline article::after {
+    left: auto;
+    right: -1.5rem;
+}
+
+/* Vertical timeline (timeline-vertical) flip to the right in RTL */
+html[dir="rtl"] .timeline-vertical {
+    padding-left: 0 !important;
+    padding-right: 3rem !important;
+    border-left: none !important;
+    border-right: 3px solid rgba(237, 192, 31, 0.3) !important;
+    text-align: right !important;
+}
+
+html[dir="rtl"] .timeline-vertical .timeline-content {
+    text-align: right !important;
+}
+
+html[dir="rtl"] .timeline-vertical .timeline-item::before {
+    left: auto !important;
+    right: -3rem !important;
+    transform: translateX(calc(50% - 1.5px)) !important;
+}
+
+html[dir="rtl"] .timeline-vertical .timeline-year {
+    margin-right: 0 !important;
+    margin-left: auto !important;
+}
+
+html[dir="rtl"] .timeline-vertical .timeline-content h3,
+html[dir="rtl"] .timeline-vertical .timeline-content p {
+    text-align: right !important;
+}
+
+/* Timeline immersive (full-width journey) RTL tweaks */
+html[dir="rtl"] .history-content {
+    direction: rtl;
+    text-align: right;
+}
+
+html[dir="rtl"] .timeline-immersive {
+    direction: rtl;
+}
+
+html[dir="rtl"] .timeline-section {
+    flex-direction: column;
+}
+
+html[dir="rtl"] .timeline-section-content {
+    text-align: right;
+}
+
+html[dir="rtl"] .timeline-section::before {
+    right: auto;
+    left: 5%;
+}
+
+html[dir="rtl"] .timeline-section::after {
+    left: auto;
+    right: 8%;
+}
+
+/* Immersive timeline background positioning for RTL */
+html[dir="rtl"] .timeline-section {
+    background-position: right center, right center !important;
+}
+
+/* Provenance section */
+html[dir="rtl"] .provenance-content {
+    direction: rtl;
+}
+
+html[dir="rtl"] .provenance-list {
+    text-align: right;
+    padding-right: 0;
+    padding-left: 0;
+}
+
+/* Chef spotlight */
+html[dir="rtl"] .chef-spotlight {
+    direction: rtl;
+}
+
+html[dir="rtl"] .chef-content {
+    text-align: right;
+}
+
+html[dir="rtl"] .chef-highlights {
+    padding-right: 1rem;
+    padding-left: 0;
+}
+
+html[dir="rtl"] .chef-highlights li::before {
+    left: auto;
+    right: -1rem;
+}
+
+html[dir="rtl"] .chef-actions {
+    justify-content: flex-start;
+}
+
+/* Product cards */
+html[dir="rtl"] .product-grid {
+    direction: rtl;
+}
+
+html[dir="rtl"] .product-card {
+    text-align: right;
+}
+
+html[dir="rtl"] .product-header {
+    flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .product-tags {
+    padding-right: 0;
+    padding-left: 0;
+    justify-content: flex-end;
+}
+
+html[dir="rtl"] .product-actions {
+    flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .product-badge {
+    left: auto;
+    right: 1rem;
+}
+
+/* Section headers */
+html[dir="rtl"] .section-header {
+    text-align: right;
+}
+
+/* Keep explicitly centered headers centered in RTL (e.g., franchising options/benefits) */
+html[dir="rtl"] .section-header.centered,
+html[dir="rtl"] .section-header.centered h1,
+html[dir="rtl"] .section-header.centered h2,
+html[dir="rtl"] .section-header.centered h3,
+html[dir="rtl"] .section-header.centered .section-kicker,
+html[dir="rtl"] .section-header.centered p {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Franchise hero and hero-like intros should stay centered in RTL */
+html[dir="rtl"] .franchise-hero,
+html[dir="rtl"] .franchise-hero-content,
+html[dir="rtl"] .franchise-hero h1,
+html[dir="rtl"] .franchise-hero .section-kicker,
+html[dir="rtl"] .franchise-hero-lead {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Carousel */
+html[dir="rtl"] .carousel {
+    direction: rtl;
+}
+
+html[dir="rtl"] .carousel-control.prev {
+    left: auto;
+    right: 0;
+}
+
+html[dir="rtl"] .carousel-control.next {
+    right: auto;
+    left: 0;
+}
+
+/* Testimonials */
+html[dir="rtl"] .testimonial-card {
+    text-align: right;
+}
+
+html[dir="rtl"] .testimonial-track {
+    animation-direction: reverse;
+}
+
+/* Journal */
+html[dir="rtl"] .journal-grid {
+    direction: rtl;
+}
+
+html[dir="rtl"] .journal-card {
+    text-align: right;
+}
+
+/* Events */
+html[dir="rtl"] .events-content {
+    direction: rtl;
+}
+
+html[dir="rtl"] .event-list li {
+    flex-direction: row-reverse;
+    text-align: right;
+}
+
+html[dir="rtl"] .events-form {
+    text-align: right;
+}
+
+/* Community section */
+html[dir="rtl"] .community-layout {
+    direction: rtl;
+}
+
+html[dir="rtl"] .community-copy {
+    text-align: right;
+}
+
+html[dir="rtl"] .community-highlights {
+    direction: rtl;
+    gap: 2rem;
+    padding-right: 0.25rem !important;
+    padding-left: 1.5rem !important;
+    text-align: center;
+}
+
+html[dir="rtl"] .community-highlights div {
+    text-align: center !important;
+    justify-items: center;
+    align-items: center;
+}
+
+html[dir="rtl"] .community-highlights div:not(:first-child) {
+    border-right: none;
+    padding-right: 0;
+    border-left: none;
+    padding-left: 0;
+}
+
+html[dir="rtl"] .community-highlights div:first-child {
+    padding-right: 0 !important;
+    /* Remove internal padding for the rightmost item */
+}
+
+html[dir="rtl"] .community-highlights dt {
+    text-align: center;
+    justify-self: center;
+    width: 100%;
+}
+
+html[dir="rtl"] .community-highlights dd {
+    line-height: 1.5;
+    text-align: center !important;
+    text-align-last: center;
+    margin: 0;
+    direction: rtl;
+    justify-self: center;
+    width: 100%;
+    white-space: normal;
+    /* Allow wrapping */
+}
+
+html[dir="rtl"] .community-actions {
+    justify-content: flex-start;
+}
+
+/* Press */
+html[dir="rtl"] .press-logos {
+    direction: rtl;
+}
+
+/* Specials */
+html[dir="rtl"] .specials-grid {
+    direction: rtl;
+}
+
+html[dir="rtl"] .special-card {
+    text-align: right;
+}
+
+/* CTA Banner */
+html[dir="rtl"] .cta-content {
+    text-align: right;
+}
+
+/* Newsletter */
+html[dir="rtl"] .newsletter-inner {
+    text-align: right;
+}
+
+html[dir="rtl"] .newsletter-form {
+    direction: rtl;
+}
+
+html[dir="rtl"] .hero-copy h1 {
+    font-weight: 900;
+}
+
+/* Footer */
+html[dir="rtl"] .footer-top {
+    direction: rtl;
+}
+
+html[dir="rtl"] .footer-brand {
+    text-align: right;
+}
+
+html[dir="rtl"] .footer-nav {
+    text-align: center;
+}
+
+html[dir="rtl"] .footer-social ul {
+    justify-content: flex-start;
+}
+
+@media (max-width: 768px) {
+
+    html[dir="rtl"] .footer-brand,
+    html[dir="rtl"] .footer-nav,
+    html[dir="rtl"] .footer-social h3 {
+        text-align: center;
+    }
+
+    html[dir="rtl"] .footer-social ul {
+        justify-content: center;
+    }
+
+    html[dir="rtl"] .hero-copy h1 {
+        min-height: 2.6em;
+    }
+}
+
+html[dir="rtl"] .footer-bottom {
+    direction: rtl;
+    text-align: center;
+    justify-content: center;
+}
+
+/* Forms */
+html[dir="rtl"] input,
+html[dir="rtl"] textarea,
+html[dir="rtl"] select {
+    text-align: right;
+    direction: rtl;
+}
+
+/* Language selector */
+.lang-selector {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    margin-left: 0.75rem;
+}
+
+html[dir="rtl"] .lang-selector {
+    margin-left: 0;
+    margin-right: 0.75rem;
+}
+
+.lang-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    padding: 0.35rem 0.6rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: var(--text);
+    cursor: pointer;
+    transition: all var(--transition);
+}
+
+.lang-btn:hover,
+.lang-btn:focus-visible {
+    background: rgba(237, 192, 31, 0.12);
+    color: #c49615;
+}
+
+.lang-btn:focus-visible {
+    outline: 2px solid #edc01f;
+    outline-offset: 2px;
+}
+
+.lang-btn.active {
+    background: #edc01f;
+    color: #fff;
+    border-color: #edc01f;
+}
+
+.lang-separator {
+    color: var(--sage-muted);
+    font-size: 0.85rem;
+}
+
+/* Mobile RTL adjustments */
+@media (max-width: 880px) {
+    html[dir="rtl"] .nav-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    html[dir="rtl"] .brand-mark {
+        order: 1;
+        flex: 1;
+        text-align: center;
+    }
+
+    html[dir="rtl"] .nav-toggle {
+        order: 0;
+    }
+
+    html[dir="rtl"] .nav-actions {
+        order: 2;
+    }
+
+    html[dir="rtl"] .nav-links {
+        text-align: center;
+        inset: calc(100% + 0.5rem) 1.25rem auto 1.25rem !important;
+        right: 1.25rem !important;
+        left: 1.25rem !important;
+    }
+
+    html[dir="rtl"] .nav-links ul {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (max-width: 680px) {
+    html[dir="rtl"] .hero {
+        text-align: right;
+    }
+
+    html[dir="rtl"] .hero-metadata {
+        justify-items: end;
+    }
+
+    html[dir="rtl"] .timeline {
+        padding-right: 2rem;
+        padding-left: 0;
+        border-left: none;
+        border-right: 2px solid var(--sage-muted);
+    }
+
+    html[dir="rtl"] .timeline article::before {
+        left: auto;
+        right: -2.5rem;
+    }
+}
+
+/* Service Cards RTL */
+html[dir="rtl"] .service-card-premium {
+    text-align: right;
+}
+
+html[dir="rtl"] .service-card-content {
+    align-items: stretch !important;
+}
+
+html[dir="rtl"] .service-feature {
+    flex-direction: row;
+    gap: 0.75rem;
+    align-self: flex-end;
+}
+
+html[dir="rtl"] .service-feature svg {
+    margin-right: 0;
+    margin-left: 0;
+}
+
+html[dir="rtl"] .service-cta {
+    width: 100% !important;
+    min-width: 100% !important;
+    display: flex !important;
+    flex-direction: row-reverse !important;
+}
+
+html[dir="rtl"] .service-cta svg {
+    transform: rotate(180deg);
+}
+
+html[dir="rtl"] .service-cta:hover svg {
+    transform: rotate(180deg) translateX(5px);
+}
+

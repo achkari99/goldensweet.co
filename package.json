@@ -1,0 +1,28 @@
+{
+  "name": "cinnamona-bakery-refactor",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Side-by-side Next.js refactor copy of the Golden Sweet website",
+  "engines": {
+    "node": "24.x"
+  },
+  "scripts": {
+    "dev": "node server.js",
+    "build": "next build",
+    "start": "cross-env NODE_ENV=production node server.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.2",
+    "multer": "^1.4.5-lts.1",
+    "next": "^15.0.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "license": "UNLICENSED"
+}

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <script>
+        // Add loading class immediately to prevent Flash of Untranslated Content
+        document.documentElement.classList.add('i18n-loading');
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Votre panier - Golden Sweet" data-i18n="meta.description">
+    <title data-i18n="cart.title">Your Cart</title>
+
+    <!-- SEO / Social -->
+    <meta property="og:title" content="Mon Panier | Golden Sweet">
+    <meta property="og:description" content="Consultez votre panier">
+    <meta property="og:type" content="website">
+    <link rel="icon" href="../images/logo1.png" type="image/png">
+
+    <!--Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../css/cart-hover.css">
+    <link rel="stylesheet" href="../css/cart-page.css">
+    <link rel="stylesheet" href="../css/rtl.css">
+    <link rel="stylesheet" href="../css/responsive-fix.css">
+    <link rel="stylesheet" href="../css/animations.css">
+</head>
+
+<body>
+    <a class="skip-link" href="#main-content" data-i18n="common.skip_to_content">Skip to content</a>
+
+    <!-- Shared header will be loaded here -->
+    <div id="header-placeholder"></div>
+
+
+    <main id="main-content">
+        <!-- Breadcrumb -->
+        <section class="breadcrumb-section">
+            <div class="breadcrumb-container">
+                <nav aria-label="Breadcrumb">
+                    <ol class="breadcrumb">
+                        <li><a href="../index.html" data-i18n="nav.home">Home</a></li>
+                        <li aria-current="page" data-i18n="cart.title">Your Cart</li>
+                    </ol>
+                </nav>
+            </div>
+        </section>
+
+        <!-- Cart Page -->
+        <section class="cart-page" data-animate>
+            <div class="cart-container">
+                <h1 class="cart-page-title" data-i18n="cart.title">Your Cart</h1>
+
+                <!-- Cart Content (populated by JavaScript) -->
+                <div id="cart-content">
+                    <!-- Will be filled by cart.js -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer loaded dynamically from components/footer.html -->
+    <div id="footer-placeholder"></div>
+
+    <!-- html2canvas for invoice generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" defer></script>
+
+    <script src="../js/header-loader.js" defer></script>
+    <script src="../js/footer-loader.js" defer></script>
+    <script src="../js/cart-manager.js" defer></script>
+    <script src="../js/invoice-generator.js" defer></script>
+    <script src="../js/cart-page.js" defer></script>
+    <script src="../js/animations.js" defer></script>
+    <script src="../script.js" defer type="module"></script>
+    <script src="../js/i18n.js" defer type="module"></script>
+
+    <!-- Add spinning animation for loading state -->
+    <style>
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</body>
+
+</html>
