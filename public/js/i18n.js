@@ -1,386 +1,441 @@
 /**
- * Cinnamona i18n - Lightweight Internationalization Module
- * Supports EN (English) and AR (Arabic with RTL)
+ * Cinnamona i18n runtime - API-backed, fail-closed, no-cache content loading.
  */
 
 const I18n = (() => {
-    // Configuration
-    const SUPPORTED_LANGS = ['en', 'ar'];
-    const DEFAULT_LANG = 'en';
-    const STORAGE_KEY = 'cinnamona-lang';
+  const SUPPORTED_LANGS = ['en', 'ar'];
+  const DEFAULT_LANG = 'en';
+  const STORAGE_KEY = 'cinnamona-lang';
 
-    // State
-    let currentLang = DEFAULT_LANG;
-    let translations = {};
-    let isLoaded = false;
+  const PAGE_ID_BY_PATH = {
+    '/': 'home',
+    '/index.html': 'home',
+    '/pages/menu.html': 'menu',
+    '/pages/contact.html': 'contact',
+    '/pages/faq.html': 'faq',
+    '/pages/franchising.html': 'franchising',
+    '/pages/la-maison.html': 'la-maison',
+    '/pages/le-laboratoire.html': 'le-laboratoire',
+    '/pages/nos-services.html': 'nos-services',
+    '/pages/panier.html': 'panier',
+    '/pages/presse.html': 'presse',
+    '/pages/privacy-policy.html': 'privacy-policy',
+    '/pages/refund-policy.html': 'refund-policy',
+    '/pages/terms-of-use.html': 'terms-of-use',
+  };
 
-    /**
-     * Detect user's preferred language
-     */
-    function detectLanguage() {
-        // Check localStorage first
-        const stored = localStorage.getItem(STORAGE_KEY);
-        if (stored && SUPPORTED_LANGS.includes(stored)) {
-            return stored;
-        }
+  let currentLang = DEFAULT_LANG;
+  let translations = {};
+  let isLoaded = false;
 
-        // Check browser language
-        const browserLang = navigator.language?.split('-')[0];
-        if (browserLang && SUPPORTED_LANGS.includes(browserLang)) {
-            return browserLang;
-        }
+  function ensureFailClosedStyles() {
+    if (document.getElementById('i18n-fail-closed-style')) return;
 
-        return DEFAULT_LANG;
+    const style = document.createElement('style');
+    style.id = 'i18n-fail-closed-style';
+    style.textContent = `
+      html.i18n-loading body {
+        opacity: 0;
+        pointer-events: none;
+      }
+      html.i18n-loaded body,
+      html.i18n-failed body {
+        opacity: 1;
+        pointer-events: auto;
+        transition: opacity .15s ease;
+      }
+      .i18n-fail-screen {
+        position: fixed;
+        inset: 0;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 12px;
+        background: #f5f0e4;
+        color: #1b1b1b;
+        z-index: 2147483647;
+        text-align: center;
+        padding: 24px;
+      }
+      .i18n-fail-screen button {
+        border: 1px solid #1b1b1b;
+        background: #ffffff;
+        color: #1b1b1b;
+        padding: 10px 16px;
+        border-radius: 10px;
+        cursor: pointer;
+      }
+      html.i18n-failed .i18n-fail-screen {
+        display: flex;
+      }
+      html.i18n-failed body > *:not(.i18n-fail-screen) {
+        display: none !important;
+      }
+    `;
+    document.head.appendChild(style);
+  }
+
+  function ensureFailScreen() {
+    let screen = document.querySelector('.i18n-fail-screen');
+    if (screen) return screen;
+
+    screen = document.createElement('div');
+    screen.className = 'i18n-fail-screen';
+    screen.innerHTML = `
+      <h1>Content unavailable</h1>
+      <p id="i18n-fail-message">We could not load website content from the server.</p>
+      <button type="button" id="i18n-retry-btn">Retry</button>
+    `;
+    document.body.appendChild(screen);
+
+    const retryBtn = screen.querySelector('#i18n-retry-btn');
+    retryBtn.addEventListener('click', async () => {
+      await init();
+    });
+
+    return screen;
+  }
+
+  function setLoadingState() {
+    document.documentElement.classList.add('i18n-loading');
+    document.documentElement.classList.remove('i18n-loaded', 'i18n-failed');
+  }
+
+  function setLoadedState() {
+    document.documentElement.classList.remove('i18n-loading', 'i18n-failed');
+    document.documentElement.classList.add('i18n-loaded');
+  }
+
+  function setFailedState(message) {
+    const screen = ensureFailScreen();
+    const msgEl = screen.querySelector('#i18n-fail-message');
+    if (msgEl && message) {
+      msgEl.textContent = message;
+    }
+    document.documentElement.classList.remove('i18n-loading', 'i18n-loaded');
+    document.documentElement.classList.add('i18n-failed');
+  }
+
+  function detectLanguage() {
+    const stored = localStorage.getItem(STORAGE_KEY);
+    if (stored && SUPPORTED_LANGS.includes(stored)) {
+      return stored;
     }
 
-    /**
-     * Load translations from JSON file
-     */
-    async function loadTranslations(lang) {
-        if (!SUPPORTED_LANGS.includes(lang)) {
-            console.warn(`Language "${lang}" not supported, falling back to "${DEFAULT_LANG}"`);
-            lang = DEFAULT_LANG;
-        }
-
-        try {
-            // Use absolute path to ensure correct loading from any subdirectory
-            const response = await fetch(`/locales/${lang}.json`, { cache: 'no-cache' });
-
-            if (!response.ok) {
-                throw new Error(`Failed to load ${lang} translations`);
-            }
-
-            translations = await response.json();
-            currentLang = lang;
-            isLoaded = true;
-
-            return translations;
-        } catch (error) {
-            console.error('i18n: Error loading translations:', error);
-
-            // Fallback to default language if not already trying it
-            if (lang !== DEFAULT_LANG) {
-                return loadTranslations(DEFAULT_LANG);
-            }
-
-            return null;
-        }
+    const browserLang = navigator.language?.split('-')[0];
+    if (browserLang && SUPPORTED_LANGS.includes(browserLang)) {
+      return browserLang;
     }
 
-    /**
-     * Get a translation by key path (e.g., "nav.home")
-     */
-    function t(keyPath, fallback = '') {
-        if (!isLoaded) {
-            console.warn('i18n: Translations not loaded yet');
-            return fallback || keyPath;
-        }
+    return DEFAULT_LANG;
+  }
 
-        const keys = keyPath.split('.');
-        let value = translations;
+  function normalizePathname(pathname) {
+    const noQuery = String(pathname || '/').split('?')[0].split('#')[0];
+    return noQuery.endsWith('/') && noQuery !== '/' ? noQuery.slice(0, -1) : noQuery;
+  }
 
-        for (const key of keys) {
-            if (value && typeof value === 'object' && key in value) {
-                value = value[key];
-            } else {
-                console.warn(`i18n: Missing translation for "${keyPath}"`);
-                return fallback || keyPath;
-            }
-        }
-
-        return value;
+  function resolvePageId() {
+    const pathname = normalizePathname(window.location.pathname || '/');
+    if (PAGE_ID_BY_PATH[pathname]) {
+      return PAGE_ID_BY_PATH[pathname];
     }
 
-    /**
-     * Apply translations to all elements with data-i18n attribute
-     */
-    function applyTranslations(emitEvent = true) {
-        if (!isLoaded) return;
-
-        // Update document metadata
-        document.documentElement.lang = translations.meta?.lang || currentLang;
-        document.documentElement.dir = translations.meta?.dir || (currentLang === 'ar' ? 'rtl' : 'ltr');
-
-        // ... existing logic ...
-
-        // Remove loading class (fixes FOUC)
-        document.documentElement.classList.remove('i18n-loading');
-
-        // Dispatch event for custom handlers
-        if (emitEvent) {
-            document.dispatchEvent(new CustomEvent('i18n:applied', {
-                detail: { lang: currentLang, translations }
-            }));
-        }
-
-        // Ensure language selectors are in sync
-        // updateLanguageSelector(currentLang); // Will be called at end
-
-
-        // Update title if available
-        if (translations.meta?.title) {
-            document.title = translations.meta.title;
-        }
-
-        // Update meta description
-        const metaDesc = document.querySelector('meta[name="description"]');
-        if (metaDesc && translations.meta?.description) {
-            metaDesc.setAttribute('content', translations.meta.description);
-        }
-
-        // Apply to all elements with data-i18n
-        document.querySelectorAll('[data-i18n]').forEach(el => {
-            const typingRoot = el.closest('[data-i18n-typing]');
-            if (typingRoot && typingRoot.hasAttribute('data-typing-initialized')) return;
-            const key = el.getAttribute('data-i18n');
-
-            // Store original content as fallback on first run
-            if (!el.hasAttribute('data-i18n-fallback')) {
-                const originalContent = el.textContent.trim();
-                if (originalContent) {
-                    el.setAttribute('data-i18n-fallback', originalContent);
-                }
-            }
-
-            const translation = t(key);
-            const fallback = el.getAttribute('data-i18n-fallback');
-
-            // Priority: translation > fallback > key
-            const finalText = (translation && translation !== key) ? translation : (fallback || key);
-
-            // Check if it's an input placeholder
-            if (el.hasAttribute('placeholder')) {
-                el.setAttribute('placeholder', finalText);
-            }
-            // Check if it's for aria-label
-            else if (el.hasAttribute('data-i18n-aria')) {
-                el.setAttribute('aria-label', finalText);
-            }
-            // Default: set text content
-            else {
-                el.textContent = finalText;
-            }
-        });
-
-        // Apply to elements with data-i18n-placeholder
-        document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
-            const key = el.getAttribute('data-i18n-placeholder');
-
-            // Store original placeholder as fallback
-            if (!el.hasAttribute('data-i18n-placeholder-fallback')) {
-                const originalPlaceholder = el.getAttribute('placeholder');
-                if (originalPlaceholder) {
-                    el.setAttribute('data-i18n-placeholder-fallback', originalPlaceholder);
-                }
-            }
-
-            const translation = t(key);
-            const fallback = el.getAttribute('data-i18n-placeholder-fallback');
-            const finalText = (translation && translation !== key) ? translation : (fallback || key);
-
-            el.setAttribute('placeholder', finalText);
-        });
-
-        // Apply to elements with data-i18n-aria
-        document.querySelectorAll('[data-i18n-aria]').forEach(el => {
-            const key = el.getAttribute('data-i18n-aria');
-
-            // Store original aria-label as fallback
-            if (!el.hasAttribute('data-i18n-aria-fallback')) {
-                const originalAria = el.getAttribute('aria-label');
-                if (originalAria) {
-                    el.setAttribute('data-i18n-aria-fallback', originalAria);
-                }
-            }
-
-            const translation = t(key);
-            const fallback = el.getAttribute('data-i18n-aria-fallback');
-            const finalText = (translation && translation !== key) ? translation : (fallback || key);
-
-            el.setAttribute('aria-label', finalText);
-        });
-
-        // Apply to elements with data-i18n-alt (images)
-        document.querySelectorAll('[data-i18n-alt]').forEach(el => {
-            const key = el.getAttribute('data-i18n-alt');
-
-            // Store original alt as fallback
-            if (!el.hasAttribute('data-i18n-alt-fallback')) {
-                const originalAlt = el.getAttribute('alt');
-                if (originalAlt) {
-                    el.setAttribute('data-i18n-alt-fallback', originalAlt);
-                }
-            }
-
-            const translation = t(key);
-            const fallback = el.getAttribute('data-i18n-alt-fallback');
-            const finalText = (translation && translation !== key) ? translation : (fallback || key);
-
-            el.setAttribute('alt', finalText);
-        });
-
-        // Apply to elements with data-i18n-typing (typing animation)
-        document.querySelectorAll('[data-i18n-typing]').forEach(el => {
-            const key = el.getAttribute('data-i18n-typing');
-            const translation = t(key);
-            if (translation && Array.isArray(translation)) {
-                el.setAttribute('data-typing-words', JSON.stringify(translation));
-                window.dispatchEvent(new CustomEvent('typing-update', { detail: { words: translation } }));
-            }
-        });
-
-        // Keep product action labels aligned with the visible translated product name.
-        document.querySelectorAll('[data-product]').forEach((card) => {
-            const nameEl = card.querySelector('h3[data-i18n], h3');
-            if (!nameEl) return;
-            const displayName = nameEl.textContent.trim();
-            if (!displayName) return;
-
-            const addBtn = card.querySelector('[data-add-to-cart]');
-            if (addBtn) {
-                addBtn.setAttribute('data-add-to-cart', displayName);
-            }
-
-            const quickBtn = card.querySelector('[data-quickview]');
-            if (quickBtn) {
-                quickBtn.setAttribute('data-quickview', displayName);
-            }
-        });
-
-        updateLanguageSelector(currentLang);
+    if (pathname.startsWith('/pages/')) {
+      const leaf = pathname.split('/').pop() || '';
+      if (leaf.endsWith('.html')) {
+        return leaf.replace(/\.html$/, '');
+      }
     }
 
-    /**
-     * Switch to a different language
-     */
-    async function switchLanguage(lang) {
-        if (!SUPPORTED_LANGS.includes(lang)) {
-            console.warn(`Language "${lang}" not supported`);
-            return false;
+    return 'home';
+  }
+
+  function deepMerge(target, source) {
+    const out = { ...target };
+
+    Object.keys(source || {}).forEach((key) => {
+      const sourceValue = source[key];
+      const targetValue = out[key];
+
+      if (
+        sourceValue &&
+        typeof sourceValue === 'object' &&
+        !Array.isArray(sourceValue) &&
+        targetValue &&
+        typeof targetValue === 'object' &&
+        !Array.isArray(targetValue)
+      ) {
+        out[key] = deepMerge(targetValue, sourceValue);
+      } else {
+        out[key] = sourceValue;
+      }
+    });
+
+    return out;
+  }
+
+  async function fetchContent(path) {
+    const response = await fetch(path, {
+      method: 'GET',
+      cache: 'no-store',
+      headers: {
+        'Cache-Control': 'no-cache',
+        Pragma: 'no-cache',
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error(`Request failed (${response.status}) for ${path}`);
+    }
+
+    const payload = await response.json();
+    if (!payload || payload.success !== true || typeof payload.data !== 'object') {
+      throw new Error(`Invalid content payload for ${path}`);
+    }
+
+    return payload.data;
+  }
+
+  async function loadTranslations(lang) {
+    if (!SUPPORTED_LANGS.includes(lang)) {
+      throw new Error(`Language "${lang}" not supported`);
+    }
+
+    const page = resolvePageId();
+
+    const [commonData, pageData] = await Promise.all([
+      fetchContent(`/api/content/common?lang=${encodeURIComponent(lang)}`),
+      fetchContent(`/api/content/page/${encodeURIComponent(page)}?lang=${encodeURIComponent(lang)}`),
+    ]);
+
+    translations = deepMerge(commonData, pageData);
+    currentLang = lang;
+    isLoaded = true;
+    return translations;
+  }
+
+  function t(keyPath, fallback = '') {
+    if (!isLoaded) {
+      return fallback;
+    }
+
+    const keys = String(keyPath || '').split('.');
+    let value = translations;
+
+    for (const key of keys) {
+      if (value && typeof value === 'object' && key in value) {
+        value = value[key];
+      } else {
+        return fallback;
+      }
+    }
+
+    return value;
+  }
+
+  function applyTranslations(emitEvent = true) {
+    if (!isLoaded) return;
+
+    document.documentElement.lang = translations.meta?.lang || currentLang;
+    document.documentElement.dir = translations.meta?.dir || (currentLang === 'ar' ? 'rtl' : 'ltr');
+
+    if (translations.meta?.title) {
+      document.title = translations.meta.title;
+    }
+
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc && translations.meta?.description) {
+      metaDesc.setAttribute('content', String(translations.meta.description));
+    }
+
+    document.querySelectorAll('[data-i18n]').forEach((el) => {
+      const typingRoot = el.closest('[data-i18n-typing]');
+      if (typingRoot && typingRoot.hasAttribute('data-typing-initialized')) return;
+
+      const key = el.getAttribute('data-i18n');
+      const translated = t(key, '');
+      const finalText = typeof translated === 'string' ? translated : '';
+
+      if (el.hasAttribute('placeholder')) {
+        el.setAttribute('placeholder', finalText);
+      } else if (el.hasAttribute('data-i18n-aria')) {
+        el.setAttribute('aria-label', finalText);
+      } else {
+        el.textContent = finalText;
+      }
+    });
+
+    document.querySelectorAll('[data-i18n-placeholder]').forEach((el) => {
+      const key = el.getAttribute('data-i18n-placeholder');
+      const translated = t(key, '');
+      el.setAttribute('placeholder', typeof translated === 'string' ? translated : '');
+    });
+
+    document.querySelectorAll('[data-i18n-aria]').forEach((el) => {
+      const key = el.getAttribute('data-i18n-aria');
+      const translated = t(key, '');
+      el.setAttribute('aria-label', typeof translated === 'string' ? translated : '');
+    });
+
+    document.querySelectorAll('[data-i18n-alt]').forEach((el) => {
+      const key = el.getAttribute('data-i18n-alt');
+      const translated = t(key, '');
+      el.setAttribute('alt', typeof translated === 'string' ? translated : '');
+    });
+
+    document.querySelectorAll('[data-i18n-typing]').forEach((el) => {
+      const key = el.getAttribute('data-i18n-typing');
+      const translated = t(key, null);
+      if (Array.isArray(translated)) {
+        el.setAttribute('data-typing-words', JSON.stringify(translated));
+        window.dispatchEvent(new CustomEvent('typing-update', { detail: { words: translated } }));
+      }
+    });
+
+    document.querySelectorAll('[data-product]').forEach((card) => {
+      const nameEl = card.querySelector('h3[data-i18n], h3');
+      if (!nameEl) return;
+      const displayName = nameEl.textContent.trim();
+      if (!displayName) return;
+
+      const addBtn = card.querySelector('[data-add-to-cart]');
+      if (addBtn) {
+        addBtn.setAttribute('data-add-to-cart', displayName);
+      }
+
+      const quickBtn = card.querySelector('[data-quickview]');
+      if (quickBtn) {
+        quickBtn.setAttribute('data-quickview', displayName);
+      }
+    });
+
+    updateLanguageSelector(currentLang);
+
+    if (emitEvent) {
+      document.dispatchEvent(new CustomEvent('i18n:applied', {
+        detail: { lang: currentLang, translations },
+      }));
+    }
+  }
+
+  async function switchLanguage(lang) {
+    if (!SUPPORTED_LANGS.includes(lang)) {
+      return false;
+    }
+
+    setLoadingState();
+
+    try {
+      await loadTranslations(lang);
+      localStorage.setItem(STORAGE_KEY, lang);
+      applyTranslations();
+      setLoadedState();
+      return true;
+    } catch (err) {
+      console.error('i18n switch failure:', err);
+      setFailedState('We could not load translated content from the server.');
+      return false;
+    }
+  }
+
+  function updateLanguageSelector(lang) {
+    document.querySelectorAll('[data-lang-switch]').forEach((el) => {
+      const btnLang = el.getAttribute('data-lang-switch');
+      if (btnLang === lang) {
+        el.classList.add('active');
+        el.setAttribute('aria-current', 'true');
+      } else {
+        el.classList.remove('active');
+        el.removeAttribute('aria-current');
+      }
+    });
+  }
+
+  function setupGlobalListeners() {
+    document.addEventListener('click', (e) => {
+      const btn = e.target.closest('[data-lang-switch]');
+      if (!btn) return;
+      e.preventDefault();
+      const lang = btn.getAttribute('data-lang-switch');
+      switchLanguage(lang);
+    });
+  }
+
+  function setupObserver() {
+    const observer = new MutationObserver((mutations) => {
+      if (!isLoaded) return;
+
+      let shouldUpdate = false;
+      for (const mutation of mutations) {
+        if (mutation.type !== 'childList' || mutation.addedNodes.length === 0) continue;
+        for (const node of mutation.addedNodes) {
+          if (node.nodeType !== 1) continue;
+          if (
+            node.hasAttribute?.('data-i18n') ||
+            node.querySelector?.('[data-i18n]') ||
+            node.querySelector?.('[data-lang-switch]')
+          ) {
+            shouldUpdate = true;
+            break;
+          }
         }
+        if (shouldUpdate) break;
+      }
 
-        if (lang === currentLang && isLoaded) {
-            updateLanguageSelector(lang); // Ensure UI matches state
-            return true; // Already on this language
-        }
+      if (!shouldUpdate) return;
+      if (window._i18nDebounce) clearTimeout(window._i18nDebounce);
+      window._i18nDebounce = setTimeout(() => {
+        applyTranslations(false);
+      }, 50);
+    });
 
-        const success = await loadTranslations(lang);
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
+    });
+  }
 
-        if (success) {
-            localStorage.setItem(STORAGE_KEY, lang);
-            applyTranslations();
-            // updateLanguageSelector is now called within applyTranslations
-            return true;
-        }
+  async function init() {
+    ensureFailClosedStyles();
+    setLoadingState();
 
-        return false;
+    if (!window.__i18nListenersSetup) {
+      setupGlobalListeners();
+      setupObserver();
+      window.__i18nListenersSetup = true;
     }
 
-    /**
-     * Update language selector UI
-     */
-    function updateLanguageSelector(lang) {
-        document.querySelectorAll('[data-lang-switch]').forEach(el => {
-            const btnLang = el.getAttribute('data-lang-switch');
+    const lang = detectLanguage();
 
-            if (btnLang === lang) {
-                el.classList.add('active');
-                el.setAttribute('aria-current', 'true');
-            } else {
-                el.classList.remove('active');
-                el.removeAttribute('aria-current');
-            }
-        });
+    try {
+      await loadTranslations(lang);
+      applyTranslations();
+      setLoadedState();
+      return true;
+    } catch (err) {
+      console.error('i18n init failure:', err);
+      setFailedState('We could not load website content from the server.');
+      return false;
     }
+  }
 
-    /**
-     * Initialize global event listeners (Event Delegation)
-     */
-    function setupGlobalListeners() {
-        // Use event delegation for language switching
-        document.addEventListener('click', (e) => {
-            const btn = e.target.closest('[data-lang-switch]');
-            if (btn) {
-                e.preventDefault();
-                const lang = btn.getAttribute('data-lang-switch');
-                switchLanguage(lang);
-            }
-        });
-    }
-
-    /**
-     * Setup MutationObserver to handle dynamic content automatically
-     */
-    function setupObserver() {
-        const observer = new MutationObserver((mutations) => {
-            let shouldUpdate = false;
-
-            mutations.forEach((mutation) => {
-                if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
-                    // Check if added nodes contain translatable elements
-                    mutation.addedNodes.forEach((node) => {
-                        if (node.nodeType === 1) { // Element node
-                            if (node.hasAttribute('data-i18n') ||
-                                node.querySelector('[data-i18n]') ||
-                                node.querySelector('[data-lang-switch]')) {
-                                shouldUpdate = true;
-                            }
-                        }
-                    });
-                }
-            });
-
-            if (shouldUpdate && isLoaded) {
-                // Debounce slighty to avoid thrashing if many nodes added at once
-                if (window._i18nDebounce) clearTimeout(window._i18nDebounce);
-                window._i18nDebounce = setTimeout(() => {
-                    applyTranslations(false); // Re-apply but DON'T trigger global event to avoid loops
-                }, 50);
-            }
-        });
-
-        observer.observe(document.body, {
-            childList: true,
-            subtree: true
-        });
-
-        console.log('i18n: MutationObserver active');
-    }
-
-    /**
-     * Initialize i18n system
-     */
-    async function init() {
-        setupGlobalListeners(); // Set up event delegation
-        setupObserver(); // Start watching for dynamic content
-
-        const lang = detectLanguage();
-        await loadTranslations(lang);
-        applyTranslations(); // Initial translation
-
-        console.log(`i18n: Initialized with "${currentLang}" language`);
-    }
-
-    // Public API
-    return {
-        init,
-        t,
-        switchLanguage,
-        applyTranslations,
-        get currentLang() { return currentLang; },
-        get isLoaded() { return isLoaded; },
-        SUPPORTED_LANGS
-    };
+  return {
+    init,
+    t,
+    switchLanguage,
+    applyTranslations,
+    get currentLang() { return currentLang; },
+    get isLoaded() { return isLoaded; },
+    SUPPORTED_LANGS,
+  };
 })();
 
-// Expose to window for global access
 window.I18n = I18n;
 
-// Auto-initialize when DOM is ready
 if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => I18n.init());
+  document.addEventListener('DOMContentLoaded', () => I18n.init());
 } else {
-    I18n.init();
+  I18n.init();
 }
-
-

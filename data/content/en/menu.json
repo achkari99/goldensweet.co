@@ -1,0 +1,15 @@
+{
+  "menu": {
+    "hero_title": "Our Menu",
+    "hero_lead": "International food with Moroccan recipes. Every recipe meets all six pillars of healthy indulgence: lactose-free, sugar-free, uses white flour, no chemical yeast, gluten-free, and free from hydrogenated oil. While others hit one or two, Golden Sweet delivers all six in every bite.",
+    "hero_subtitle": "Discover our full range of artisan treats",
+    "filter_all": "All",
+    "filter_sugar_free": "Sugar-Free",
+    "filter_gluten_free": "Gluten Free",
+    "filter_keto": "Keto",
+    "filter_low_carb": "Low Carb",
+    "filter_healthy": "Healthy",
+    "filter_raw_materials": "Raw Materials",
+    "filter_vegetarian": "Vegetarian"
+  }
+}

@@ -3,16 +3,76 @@ const jwt = require('jsonwebtoken');
 const DataStore = require('./dataStore');
 const { authMiddleware } = require('./auth');
 const { createUploader } = require('./upload');
+const { ContentStore, ContentError } = require('./contentStore');
 
 function getEntityId(req) {
   const rawId = req.params?.id ?? req.query?.id;
   return rawId == null ? '' : String(rawId).trim();
 }
 
+function setContentNoCacheHeaders(res) {
+  res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0');
+  res.setHeader('Pragma', 'no-cache');
+  res.setHeader('Expires', '0');
+  res.setHeader('Surrogate-Control', 'no-store');
+}
+
 function createApiRouter({ projectRoot }) {
   const router = express.Router();
   const store = new DataStore({ projectRoot });
   const upload = createUploader({ projectRoot });
+  const contentStore = new ContentStore({ projectRoot });
+
+  router.get('/content/manifest', async (req, res) => {
+    setContentNoCacheHeaders(res);
+    try {
+      const manifest = await contentStore.getManifest();
+      return res.json({
+        success: true,
+        data: manifest,
+      });
+    } catch (err) {
+      const status = err.status || 500;
+      return res.status(status).json({ success: false, error: err.message || 'Failed to load content manifest' });
+    }
+  });
+
+  router.get('/content/common', async (req, res) => {
+    setContentNoCacheHeaders(res);
+    const lang = String(req.query.lang || 'en').toLowerCase();
+    try {
+      const data = await contentStore.getCommon(lang);
+      return res.json({
+        success: true,
+        lang,
+        page: 'common',
+        data,
+      });
+    } catch (err) {
+      const status = err.status || 500;
+      const message = err instanceof ContentError ? err.message : 'Failed to load common content';
+      return res.status(status).json({ success: false, error: message });
+    }
+  });
+
+  router.get('/content/page/:page', async (req, res) => {
+    setContentNoCacheHeaders(res);
+    const lang = String(req.query.lang || 'en').toLowerCase();
+    const page = String(req.params.page || '').toLowerCase();
+    try {
+      const data = await contentStore.getPage(lang, page);
+      return res.json({
+        success: true,
+        lang,
+        page,
+        data,
+      });
+    } catch (err) {
+      const status = err.status || 500;
+      const message = err instanceof ContentError ? err.message : 'Failed to load page content';
+      return res.status(status).json({ success: false, error: message });
+    }
+  });
 
   router.post(['/auth/login', '/auth-login'], async (req, res) => {
     const { email, password } = req.body;

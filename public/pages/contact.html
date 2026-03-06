@@ -6,11 +6,6 @@
     <script>
         // Add loading class immediately to prevent Flash of Untranslated Content
         document.documentElement.classList.add('i18n-loading');
-
-        // Safety timeout
-        setTimeout(() => {
-            document.documentElement.classList.remove('i18n-loading');
-        }, 3000);
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact | Golden Sweet</title>
@@ -43,8 +38,8 @@
     <main id="main-content">
         <section class="page-hero" data-animate>
             <div class="page-hero-content">
-                <span class="section-kicker" data-i18n="contact.hero_subtitle">We'd love to hear from you</span>
-                <h1 data-i18n="contact.hero_title">Get in Touch</h1>
+                <span class="section-kicker" data-i18n="contact.hero_subtitle"></span>
+                <h1 data-i18n="contact.hero_title"></h1>
             </div>
         </section>
 
@@ -52,52 +47,52 @@
             <div class="contact-layout">
                 <!-- Contact Form -->
                 <div class="contact-form-card">
-                    <h2 data-i18n="contact.form_title">Send us a Message</h2>
+                    <h2 data-i18n="contact.form_title"></h2>
                     <form id="contact-form" action="#" method="POST">
                         <div class="form-group">
-                            <label for="name" data-i18n="contact.form_name">Full Name</label>
-                            <input type="text" id="name" name="name" required placeholder="Your name"
+                            <label for="name" data-i18n="contact.form_name"></label>
+                            <input type="text" id="name" name="name" required placeholder=""
                                 data-i18n="contact.form_name_placeholder">
                         </div>
                         <div class="form-group">
-                            <label for="email" data-i18n="contact.form_email">Email Address</label>
-                            <input type="email" id="email" name="email" required placeholder="your@email.com"
+                            <label for="email" data-i18n="contact.form_email"></label>
+                            <input type="email" id="email" name="email" required placeholder=""
                                 data-i18n="contact.form_email_placeholder">
                         </div>
                         <div class="form-group">
-                            <label for="phone" data-i18n="contact.form_phone">Phone Number</label>
-                            <input type="tel" id="phone" name="phone" placeholder="+212 6XX XXX XXX"
+                            <label for="phone" data-i18n="contact.form_phone"></label>
+                            <input type="tel" id="phone" name="phone" placeholder=""
                                 data-i18n="contact.form_phone_placeholder">
                         </div>
                         <div class="form-group">
-                            <label for="subject" data-i18n="contact.form_subject">Subject</label>
+                            <label for="subject" data-i18n="contact.form_subject"></label>
                             <select id="subject" name="subject" required>
-                                <option value="" data-i18n="contact.form_subject_general">General Inquiry</option>
-                                <option value="order" data-i18n="contact.form_subject_order">Order Question</option>
-                                <option value="catering" data-i18n="contact.form_subject_catering">Catering Request</option>
-                                <option value="wholesale" data-i18n="contact.form_subject_wholesale">Wholesale Inquiry</option>
-                                <option value="workshop" data-i18n="contact.form_subject_workshop">Workshop Booking</option>
-                                <option value="press" data-i18n="contact.form_subject_press">Press &amp; Media</option>
+                                <option value="" data-i18n="contact.form_subject_general"></option>
+                                <option value="order" data-i18n="contact.form_subject_order"></option>
+                                <option value="catering" data-i18n="contact.form_subject_catering"></option>
+                                <option value="wholesale" data-i18n="contact.form_subject_wholesale"></option>
+                                <option value="workshop" data-i18n="contact.form_subject_workshop"></option>
+                                <option value="press" data-i18n="contact.form_subject_press"></option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="message" data-i18n="contact.form_message">Your Message</label>
-                            <textarea id="message" name="message" required placeholder="How can we help you?"
-                                data-i18n="contact.form_message_placeholder">How can we help you?</textarea>
+                            <label for="message" data-i18n="contact.form_message"></label>
+                            <textarea id="message" name="message" required placeholder=""
+                                data-i18n="contact.form_message_placeholder"></textarea>
                         </div>
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary" data-i18n="contact.form_submit">Send Message</button>
+                            <button type="submit" class="btn btn-primary" data-i18n="contact.form_submit"></button>
                         </div>
                     </form>
                     <div id="form-success"
                         style="display:none;padding:1.5rem;background:var(--sage-muted);border-radius:var(--radius-sm);text-align:center;">
-                        <p style="color:var(--sage-dark);font-weight:600;" data-i18n="contact.form_success">Thank you! We'll get back to you soon.</p>
+                        <p style="color:var(--sage-dark);font-weight:600;" data-i18n="contact.form_success"></p>
                     </div>
                 </div>
 
                 <!-- Contact Info -->
                 <div class="contact-info-card">
-                    <h3 data-i18n="contact.info_heading">Contact Information</h3>
+                    <h3 data-i18n="contact.info_heading"></h3>
 
                     <div class="contact-info-item">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -105,13 +100,13 @@
                             <circle cx="12" cy="10" r="3" />
                         </svg>
                         <div>
-                            <strong data-i18n="contact.service_area_label">Service Area</strong><br>
-                            <span data-i18n="contact.production_label">Production</span>: <span
-                                data-i18n="contact.city_tetouan">Morocco, Tetouan</span><br>
-                            <span data-i18n="contact.delivery_label">Delivery</span>: <span
-                                data-i18n="contact.city_tetouan_tangier">Morocco, Tetouan &amp; Morocco, Tangier</span><br>
-                            <span data-i18n="contact.address_label">Address</span>: <span
-                                data-i18n="contact.address_val" data-contact-address>mourrir, jamae oma, no 9 Av. Mohamed Hajjaj</span>
+                            <strong data-i18n="contact.service_area_label"></strong><br>
+                            <span data-i18n="contact.production_label"></span>: <span
+                                data-i18n="contact.city_tetouan"></span><br>
+                            <span data-i18n="contact.delivery_label"></span>: <span
+                                data-i18n="contact.city_tetouan_tangier"></span><br>
+                            <span data-i18n="contact.address_label"></span>: <span
+                                data-i18n="contact.address_val" data-contact-address></span>
                         </div>
                     </div>
 
@@ -121,7 +116,7 @@
                                 d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.58 2.81.7A2 2 0 0 1 22 16.92z" />
                         </svg>
                         <div>
-                            <strong data-i18n="contact.phone_label">Phone</strong><br>
+                            <strong data-i18n="contact.phone_label"></strong><br>
                             <a href="tel:+212637629395" data-contact-phone>+212 637-629395</a>
                         </div>
                     </div>
@@ -132,7 +127,7 @@
                             <polyline points="22,6 12,13 2,6" />
                         </svg>
                         <div>
-                            <strong data-i18n="contact.email_label">Email</strong><br>
+                            <strong data-i18n="contact.email_label"></strong><br>
                             <a href="mailto:contact@goldensweet.co" data-contact-email>contact@goldensweet.co</a>
                         </div>
                     </div>
@@ -143,9 +138,9 @@
                             <polyline points="12 6 12 12 16 14" />
                         </svg>
                         <div>
-                            <strong data-i18n="contact.hours_label">Hours</strong><br>
-                            <span data-i18n="contact.hours_days">Days : Monday to Saturday</span><br>
-                            <span data-i18n="contact.hours_times">Hours : 10:00 PM - 8:00 PM</span><br>
+                            <strong data-i18n="contact.hours_label"></strong><br>
+                            <span data-i18n="contact.hours_days"></span><br>
+                            <span data-i18n="contact.hours_times"></span><br>
                         </div>
                     </div>
 

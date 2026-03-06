@@ -9,7 +9,14 @@
   "scripts": {
     "dev": "node server.js",
     "build": "next build",
-    "start": "cross-env NODE_ENV=production node server.js"
+    "start": "cross-env NODE_ENV=production node server.js",
+    "content:build": "node scripts/build-content-files.js",
+    "content:strip-static": "node scripts/strip-static-i18n-html.js",
+    "content:validate:keys": "node scripts/validate-content-keys.js",
+    "content:validate:parity": "node scripts/validate-content-parity.js",
+    "content:validate:no-static": "node scripts/validate-no-static-fallback.js",
+    "content:validate:quality": "node scripts/validate-translation-quality.js",
+    "content:validate": "npm run content:validate:parity && npm run content:validate:keys && npm run content:validate:no-static && npm run content:validate:quality"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
