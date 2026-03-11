@@ -733,6 +733,11 @@
     opacity: 0.7;
 }
 
+/* Keep EN ROI/Investment lines slightly higher on page 17 without affecting Arabic layout */
+html[lang="en"] .franchise-content .franchise-footer {
+    transform: translateY(-12px);
+}
+
 /* === PAGE NUMBER === */
 .page-number {
     position: absolute;
