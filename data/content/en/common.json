@@ -1,4 +1,4 @@
-{
+﻿{
   "meta": {
     "lang": "en",
     "dir": "ltr",
@@ -20,7 +20,7 @@
     "order": "Order Now"
   },
   "promo": {
-    "banner": "FOR A LIMITED TIME · FREE DELIVERY TO TANGIER FROM 500 DHs",
+    "banner": "FOR A LIMITED TIME Â· FREE DELIVERY TO TANGIER FROM 500 DHs",
     "banner_home": ""
   },
   "footer": {
@@ -143,12 +143,12 @@
     "pistachio_title": "Pistachio Almond Roll",
     "pistachio_desc": "Homemade pistachio cream, roasted almonds and matcha glaze for a fresh touch.",
     "pistachio_badge": "Pistachio",
-    "pasteis_title": "Plant-Based Pastéis de Nata",
+    "pasteis_title": "Plant-Based PastÃ©is de Nata",
     "pasteis_desc": "Vanilla custard, flaky pastry and caramelized muscovado sugar.",
-    "pasteis_badge": "Pastéis",
-    "canneles_title": "Almond Milk Cannelés",
+    "pasteis_badge": "PastÃ©is",
+    "canneles_title": "Almond Milk CannelÃ©s",
     "canneles_desc": "Soft vanilla center, caramelized shell and a touch of orange blossom.",
-    "canneles_badge": "Cannelés",
+    "canneles_badge": "CannelÃ©s",
     "box_title": "Discovery Box - 6 Rolls",
     "box_desc": "A ready-to-share assortment of our iconic rolls: vanilla, caramel, chocolate, raspberry and pistachio.",
     "box_badge": "Box",
@@ -156,7 +156,7 @@
     "raspberry_desc": "Light vanilla cream, raspberry coulis and pink glaze on a soft roll.",
     "raspberry_badge": "Raspberry",
     "coffee_title": "Moroccan Coffee Roll",
-    "coffee_desc": "Mocha glaze with Guéliz coffee beans, blond caramel and orange blossom touch.",
+    "coffee_desc": "Mocha glaze with GuÃ©liz coffee beans, blond caramel and orange blossom touch.",
     "coffee_badge": "Mocha",
     "tag_vegan": "Vegan",
     "tag_no_eggs": "Egg-Free",
@@ -223,8 +223,8 @@
     "hero_subtitle": "Discover our full range of artisan treats",
     "filter_all": "All",
     "filter_rolls": "Cinnamon Rolls",
-    "filter_canneles": "Cannelés",
-    "filter_pasteis": "Pastéis",
+    "filter_canneles": "CannelÃ©s",
+    "filter_pasteis": "PastÃ©is",
     "filter_drinks": "Drinks",
     "filter_boxes": "Gift Boxes",
     "details": "Details",
@@ -266,7 +266,7 @@
     "email_label": "Email",
     "hours_label": "Hours",
     "hours_days": "Days : Monday to Saturday",
-    "hours_times": "Hours : 10:00 PM - 8:00 PM",
+    "hours_times": "Hours : 8:00 AM - 10:00 PM",
     "season_winter": "Winter",
     "season_summer": "Summer",
     "city_tetouan": "Morocco, Tetouan",
@@ -277,3 +277,4 @@
     "map_title": "Golden Sweet"
   }
 }
+

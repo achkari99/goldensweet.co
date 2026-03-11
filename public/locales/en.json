@@ -163,7 +163,7 @@
     "catalog_raw_oils_chapter": "02",
     "catalog_raw_oils_label": "Raw Materials",
     "catalog_raw_oils_title": "Oils, Clean and Nourishing",
-    "catalog_raw_oils_text1": "We replace butter with carefully selected natural oils: olive oil, almond oil, and coconut oil to keep textures tender and light.",
+    "catalog_raw_oils_text1": "We carefully select natural oils: olive oil, almond oil, and coconut oil to keep textures tender and light.",
     "catalog_raw_oils_text2": "They deliver a clean finish and let each flavor shine without heaviness.",
     "catalog_page3_chapter": "02",
     "catalog_page3_label": "Origins",
@@ -256,7 +256,7 @@
     "catalog_page16_signature": "Chef Aziza",
     "catalog_page17_label": "Opportunity",
     "catalog_page17_title": "Join the Heritage",
-    "catalog_page17_desc": "Bring the Golden Sweet experience to your city.",
+    "catalog_page17_desc": "Bring the Golden Sweet experience to your city or country.",
     "catalog_franchise_years": "Years",
     "catalog_franchise_support": "Support",
     "catalog_franchise_roi": "Roi: 7%",
@@ -611,7 +611,7 @@
     "email_label": "Email",
     "hours_label": "Hours",
     "hours_days": "Days : Monday to Saturday",
-    "hours_times": "Hours : 10:00 PM - 8:00 PM",
+    "hours_times": "Hours : 8:00 AM - 10:00 PM",
     "season_winter": "Winter",
     "season_summer": "Summer",
     "city_tetouan": "Morocco, Tetouan",
@@ -1069,6 +1069,7 @@
     "thank_you": "Thank you for confirming my order!"
   }
 }
+
 
 
 

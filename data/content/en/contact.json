@@ -1,4 +1,4 @@
-{
+﻿{
   "contact": {
     "title": "Contact | Golden Sweet",
     "hero_title": "Get in Touch",
@@ -34,7 +34,7 @@
     "email_label": "Email",
     "hours_label": "Hours",
     "hours_days": "Days : Monday to Saturday",
-    "hours_times": "Hours : 10:00 PM - 8:00 PM",
+    "hours_times": "Hours : 8:00 AM - 10:00 PM",
     "season_winter": "Winter",
     "season_summer": "Summer",
     "city_tetouan": "Morocco, Tetouan",
@@ -45,3 +45,4 @@
     "map_title": "Golden Sweet"
   }
 }
+

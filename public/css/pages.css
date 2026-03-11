@@ -1408,22 +1408,25 @@ html[dir="rtl"] .lead-ar {
 }
 
 .contact-social a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     width: 44px;
     height: 44px;
-    background: rgba(255, 255, 255, 0.15);
     border-radius: 50%;
-    display: grid;
-    place-items: center;
-    transition: background var(--transition);
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    background: transparent;
+    transition: background-color var(--transition), transform var(--transition);
 }
 
 .contact-social a:hover {
-    background: rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.16);
+    transform: translateY(-3px);
 }
 
 .contact-social svg {
-    width: 22px;
-    height: 22px;
+    width: 20px;
+    height: 20px;
 }
 
 /* =========================================
