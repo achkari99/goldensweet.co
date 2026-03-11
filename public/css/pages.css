@@ -1930,6 +1930,37 @@ html[dir="rtl"] .lead-ar {
     .shops-grid {
         grid-template-columns: 1fr;
     }
+
+    /* Contact page mobile fit */
+    .contact-layout {
+        gap: 1rem;
+    }
+
+    .contact-form-card,
+    .contact-info-card {
+        width: 100%;
+        max-width: 100%;
+        padding: 1.5rem;
+        border-radius: 18px;
+        overflow: hidden;
+    }
+
+    .contact-info-item {
+        gap: 0.75rem;
+    }
+
+    .contact-info-item>div,
+    .contact-info-item span,
+    .contact-info-item a {
+        overflow-wrap: anywhere;
+        word-break: break-word;
+    }
+
+    .contact-social {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.75rem;
+    }
 }
 
 .options-section {

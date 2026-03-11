@@ -263,17 +263,12 @@
 
     .catalog-filters {
         display: flex !important;
-        flex-wrap: nowrap !important;
-        overflow-x: auto !important;
-        padding: 0.5rem 1.25rem 1.5rem !important;
-        margin: 0 -1.25rem 2rem !important;
+        flex-wrap: wrap !important;
+        overflow-x: visible !important;
+        padding: 0.5rem 0 1.5rem !important;
+        margin: 0 0 2rem !important;
         gap: 0.75rem !important;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-    }
-
-    .catalog-filters::-webkit-scrollbar {
-        display: none;
+        justify-content: center;
     }
 
     .filter-btn {
